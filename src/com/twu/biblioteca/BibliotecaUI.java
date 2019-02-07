@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 class BibliotecaUI {
 
+    private BibliotecaShelf shelf;
+
     private String welcomeMessage = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!";
     private String listOfAllBooksWithAuthorAndPublishedYear = "Rainbirds | Clarissa Goenawan | 2018\n" +
             "Bury What We Cannot Take | Kirsten Chen | 2018\n" +
@@ -16,6 +18,10 @@ class BibliotecaUI {
     private String invalidMessage = "Please select a valid option!";
     private String exitMessage = "Exiting application";
 
+    BibliotecaUI() {
+        shelf = new BibliotecaShelf();
+    }
+
     public void start() {
         printWelcomeMessage();
         printMainMenu();
@@ -27,7 +33,7 @@ class BibliotecaUI {
     }
 
     public void printAllBooksWithAuthorAndPublishedYear() {
-        System.out.println(listOfAllBooksWithAuthorAndPublishedYear);
+        System.out.println(shelf.getAllBooks());
     }
 
     public void printMainMenu() {

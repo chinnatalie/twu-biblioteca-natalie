@@ -29,4 +29,10 @@ class BibliotecaUI {
                 "Ponti | Sharlene Teo | 2018\n";
         System.out.println(listOfAllBooksWithAuthorAndPublishedYear);
     }
+
+    public void printMainMenu() {
+        String mainMenu = "------- Main menu -------\n" +
+                "1) List of books";
+        System.out.println(mainMenu);
+    }
 }

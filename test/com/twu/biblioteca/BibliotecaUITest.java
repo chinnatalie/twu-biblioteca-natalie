@@ -1,7 +1,6 @@
 package com.twu.biblioteca;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
@@ -33,6 +32,11 @@ public class BibliotecaUITest {
         System.setOut(new PrintStream(outContent));
     }
 
+    private void givenUserInputs(String userInput) {
+        InputStream inContent = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(inContent);
+    }
+
     @Before
     public void initializeBibliotecaApp() {
         bibliotecaUI = new BibliotecaUI();
@@ -58,7 +62,7 @@ public class BibliotecaUITest {
 
     @Test
     public void shouldSeeWelcomeMessageThenMainMenu() {
-        System.setIn(new ByteArrayInputStream("0".getBytes()));
+        givenUserInputs("1");
         bibliotecaUI.start();
         assertThat(outContent.toString(),startsWith(welcomeMessage + mainMenu));
     }
@@ -79,9 +83,7 @@ public class BibliotecaUITest {
 
     @Test
     public void shouldSeeAllBooksIfSelectedAfterMainMenu() {
-        String userInput = "1";
-        InputStream inContent = new ByteArrayInputStream(userInput.getBytes());
-        System.setIn(inContent);
+        givenUserInputs("1");
         bibliotecaUI.start();
         assertThat(outContent.toString(), endsWith(listOfAllBooksWithAuthorAndPublishedYear));
     }

@@ -62,4 +62,11 @@ public class BibliotecaUITest {
         bibliotecaUI.selectMenuOption(userInput);
         assertThat(outContent.toString(),is(listOfAllBooksWithAuthorAndPublishedYear));
     }
+
+    @Test
+    public void shouldSeeInvalidMessageWhenSelectedOptionIsInvalid() {
+        String userInput = "120";
+        bibliotecaUI.selectMenuOption(userInput);
+        assertThat(outContent.toString(),is("Please select a valid option!\n"));
+    }
 }

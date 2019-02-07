@@ -62,29 +62,36 @@ public class BibliotecaUITest {
 
     @Test
     public void shouldSeeWelcomeMessageThenMainMenu() {
-        givenUserInputs("1");
+        givenUserInputs("1\n2");
         bibliotecaUI.start();
         assertThat(outContent.toString(),startsWith(welcomeMessage + mainMenu));
     }
 
     @Test
     public void shouldSeeAllBooksIfSelectedFromMainMenu() {
-        String userInput = "1";
-        bibliotecaUI.selectMenuOption(userInput);
-        assertThat(outContent.toString(),is(listOfAllBooksWithAuthorAndPublishedYear));
+        givenUserInputs("1\n2");
+        bibliotecaUI.selectMenuOption("");
+        assertThat(outContent.toString(),startsWith(listOfAllBooksWithAuthorAndPublishedYear));
     }
 
     @Test
     public void shouldSeeInvalidMessageWhenSelectedOptionIsInvalid() {
-        String userInput = "120";
-        bibliotecaUI.selectMenuOption(userInput);
-        assertThat(outContent.toString(),is(invalidMessage));
+        givenUserInputs("120\n2");
+        bibliotecaUI.selectMenuOption("");
+        assertThat(outContent.toString(),startsWith(invalidMessage));
     }
 
     @Test
     public void shouldSeeAllBooksIfSelectedAfterMainMenu() {
-        givenUserInputs("1");
+        givenUserInputs("1\n2");
         bibliotecaUI.start();
-        assertThat(outContent.toString(), endsWith(listOfAllBooksWithAuthorAndPublishedYear));
+        assertThat(outContent.toString(), startsWith(welcomeMessage + mainMenu + listOfAllBooksWithAuthorAndPublishedYear));
+    }
+
+    @Test
+    public void shouldQuitApplicationIfSelected() {
+        givenUserInputs("1\n1\n1\n2");
+        bibliotecaUI.start();
+        assertThat(outContent.toString(),endsWith("Exiting application\n"));
     }
 }

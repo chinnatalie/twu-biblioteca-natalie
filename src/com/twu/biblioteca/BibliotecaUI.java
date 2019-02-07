@@ -7,8 +7,7 @@ class BibliotecaUI {
     public void start() {
         printWelcomeMessage();
         printMainMenu();
-        Scanner scanner = new Scanner(System.in);
-        selectMenuOption(scanner.next());
+        selectMenuOption("");
     }
 
     public void printWelcomeMessage() {
@@ -33,9 +32,17 @@ class BibliotecaUI {
 
     public void selectMenuOption(String userInput) {
         String invalidMessage = "Please select a valid option!";
-        if (Integer.parseInt(userInput) == 1)
-            printAllBooksWithAuthorAndPublishedYear();
-        else
-            System.out.println(invalidMessage);
+        Scanner scanner = new Scanner(System.in);
+        while(true) {
+            String input = scanner.next();
+            if (Integer.parseInt(input) == 1)
+                printAllBooksWithAuthorAndPublishedYear();
+            else if (Integer.parseInt(input) == 2) {
+                System.out.println("Exiting application");
+                break;
+            }
+            else
+                System.out.println(invalidMessage);
+        }
     }
 }

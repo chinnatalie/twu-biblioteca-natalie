@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.io.PrintStream;
 
 import static org.hamcrest.core.StringEndsWith.endsWith;
+import static org.hamcrest.core.StringStartsWith.startsWith;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.core.Is.is;
 
@@ -55,11 +56,11 @@ public class BibliotecaUITest {
         assertThat(outContent.toString(),is(mainMenu));
     }
 
-    @Ignore
     @Test
     public void shouldSeeWelcomeMessageThenMainMenu() {
+        System.setIn(new ByteArrayInputStream("0".getBytes()));
         bibliotecaUI.start();
-        assertThat(outContent.toString(),is(welcomeMessage + mainMenu));
+        assertThat(outContent.toString(),startsWith(welcomeMessage + mainMenu));
     }
 
     @Test

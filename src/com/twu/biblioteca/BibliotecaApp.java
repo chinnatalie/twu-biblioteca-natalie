@@ -19,4 +19,13 @@ public class BibliotecaApp {
                 "Ponti by Sharlene Teo\n";
         System.out.println(listOfAllBooks);
     }
+
+    public void printAllBooksWithAuthorAndPublishedYear() {
+        String listOfAllBooksWithAuthorAndPublishedYear = "Rainbirds | Clarissa Goenawan | 2018\n" +
+                "Bury What We Cannot Take | Kirsten Chen | 2018\n" +
+                "An Ocean of Minutes | Thea Lim | 2018\n" +
+                "The Descent of Monsters (The Tensorate Series) | JY Yang | 2018\n" +
+                "Ponti | Sharlene Teo | 2018\n";
+        System.out.println(listOfAllBooksWithAuthorAndPublishedYear);
+    }
 }

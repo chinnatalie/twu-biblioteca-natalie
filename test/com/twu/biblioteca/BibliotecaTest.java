@@ -40,4 +40,15 @@ public class BibliotecaTest {
                 "Ponti by Sharlene Teo\n\n";
         assertThat(outContent.toString(),is(listOfAllBooks));
     }
+
+    @Test
+    public void shouldSeeAllBooksWithAuthorAndPublishedYear() {
+        bibliotecaApp.printAllBooksWithAuthorAndPublishedYear();
+        String listOfAllBooksWithAuthorAndPublishedYear = "Rainbirds | Clarissa Goenawan | 2018\n" +
+                "Bury What We Cannot Take | Kirsten Chen | 2018\n" +
+                "An Ocean of Minutes | Thea Lim | 2018\n" +
+                "The Descent of Monsters (The Tensorate Series) | JY Yang | 2018\n" +
+                "Ponti | Sharlene Teo | 2018\n\n";
+        assertThat(outContent.toString(),is(listOfAllBooksWithAuthorAndPublishedYear));
+    }
 }

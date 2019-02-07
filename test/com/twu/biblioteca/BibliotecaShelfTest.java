@@ -34,4 +34,9 @@ public class BibliotecaShelfTest {
                 "Ponti | Sharlene Teo | 2018\n" +
                 "The Descent of Monsters (The Tensorate Series) | JY Yang | 2018\n"));
     }
+
+    @Test
+    public void shouldReturnSuccessMessageOnCheckout() {
+        assertThat(bibliotecaShelf.checkoutBook("Rainbirds | Clarissa Goenawan | 2018"), is("Thank you! Enjoy the book"));
+    }
 }

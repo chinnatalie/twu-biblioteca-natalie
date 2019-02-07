@@ -37,7 +37,8 @@ public class BibliotecaShelf {
         return result;
     }
 
-    public void checkoutBook(String book) {
+    public String checkoutBook(String book) {
         books.replace(book, Status.CHECKEDOUT);
+        return "Thank you! Enjoy the book";
     }
 }

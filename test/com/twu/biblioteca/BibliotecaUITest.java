@@ -42,7 +42,7 @@ public class BibliotecaUITest {
     }
 
     @Before
-    public void initializeBibliotecaApp() {
+    public void initializeBibliotecaUI() {
         bibliotecaUI = new BibliotecaUI();
     }
 

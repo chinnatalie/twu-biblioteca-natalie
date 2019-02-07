@@ -24,11 +24,11 @@ public class BibliotecaUITest {
     private final String mainMenu = "------- Main menu -------\n" +
             "1) List of books\n" +
             "2) Exit\n";
-    private final String listOfAllBooksWithAuthorAndPublishedYear = "Rainbirds | Clarissa Goenawan | 2018\n" +
+    private final String listOfAllBooksWithAuthorAndPublishedYear = "An Ocean of Minutes | Thea Lim | 2018\n" +
             "Bury What We Cannot Take | Kirsten Chen | 2018\n" +
-            "An Ocean of Minutes | Thea Lim | 2018\n" +
-            "The Descent of Monsters (The Tensorate Series) | JY Yang | 2018\n" +
-            "Ponti | Sharlene Teo | 2018\n\n";
+            "Ponti | Sharlene Teo | 2018\n" +
+            "Rainbirds | Clarissa Goenawan | 2018\n" +
+            "The Descent of Monsters (The Tensorate Series) | JY Yang | 2018\n\n";
     private final String invalidMessage = "Please select a valid option!\n";
 
     @Before

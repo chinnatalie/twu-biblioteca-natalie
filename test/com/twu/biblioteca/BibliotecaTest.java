@@ -51,4 +51,16 @@ public class BibliotecaTest {
                 "Ponti | Sharlene Teo | 2018\n\n";
         assertThat(outContent.toString(),is(listOfAllBooksWithAuthorAndPublishedYear));
     }
+
+    @Test
+    public void shouldSeeWelcomeMessageThenAllBooksWithAuthorAndPublishedYear() {
+        bibliotecaUI.start();
+        String welcomeMessage = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!\n";
+        String listOfAllBooksWithAuthorAndPublishedYear = "Rainbirds | Clarissa Goenawan | 2018\n" +
+                "Bury What We Cannot Take | Kirsten Chen | 2018\n" +
+                "An Ocean of Minutes | Thea Lim | 2018\n" +
+                "The Descent of Monsters (The Tensorate Series) | JY Yang | 2018\n" +
+                "Ponti | Sharlene Teo | 2018\n\n";
+        assertThat(outContent.toString(),is(welcomeMessage+listOfAllBooksWithAuthorAndPublishedYear));
+    }
 }

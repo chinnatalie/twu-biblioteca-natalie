@@ -2,6 +2,11 @@ package com.twu.biblioteca;
 
 class BibliotecaUI {
 
+    public void start() {
+        printWelcomeMessage();
+        printAllBooksWithAuthorAndPublishedYear();
+    }
+
     public void printWelcomeMessage() {
         String welcomeMessage = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!";
         System.out.println(welcomeMessage);

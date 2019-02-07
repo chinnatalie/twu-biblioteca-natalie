@@ -13,10 +13,13 @@ import static org.hamcrest.core.StringStartsWith.startsWith;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.core.Is.is;
 
+
+
 public class BibliotecaUITest {
 
     private static BibliotecaUI bibliotecaUI;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+
     private final String welcomeMessage = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!\n";
     private final String mainMenu = "------- Main menu -------\n" +
             "1) List of books\n";
@@ -70,14 +73,14 @@ public class BibliotecaUITest {
     @Test
     public void shouldSeeAllBooksIfSelectedFromMainMenu() {
         givenUserInputs("1\n2");
-        bibliotecaUI.selectMenuOption("");
+        bibliotecaUI.selectMenuOption();
         assertThat(outContent.toString(),startsWith(listOfAllBooksWithAuthorAndPublishedYear));
     }
 
     @Test
     public void shouldSeeInvalidMessageWhenSelectedOptionIsInvalid() {
         givenUserInputs("120\n2");
-        bibliotecaUI.selectMenuOption("");
+        bibliotecaUI.selectMenuOption();
         assertThat(outContent.toString(),startsWith(invalidMessage));
     }
 

@@ -1,10 +1,14 @@
 package com.twu.biblioteca;
 
+import java.util.Scanner;
+
 class BibliotecaUI {
 
     public void start() {
         printWelcomeMessage();
         printMainMenu();
+        Scanner scanner = new Scanner(System.in);
+        selectMenuOption(scanner.next());
     }
 
     public void printWelcomeMessage() {
@@ -29,7 +33,7 @@ class BibliotecaUI {
 
     public void selectMenuOption(String userInput) {
         String invalidMessage = "Please select a valid option!";
-        if (userInput == "1")
+        if (Integer.parseInt(userInput) == 1)
             printAllBooksWithAuthorAndPublishedYear();
         else
             System.out.println(invalidMessage);

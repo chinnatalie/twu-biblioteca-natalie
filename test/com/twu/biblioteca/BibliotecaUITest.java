@@ -1,11 +1,15 @@
 package com.twu.biblioteca;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.io.PrintStream;
 
+import static org.hamcrest.core.StringEndsWith.endsWith;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.core.Is.is;
 
@@ -51,6 +55,7 @@ public class BibliotecaUITest {
         assertThat(outContent.toString(),is(mainMenu));
     }
 
+    @Ignore
     @Test
     public void shouldSeeWelcomeMessageThenMainMenu() {
         bibliotecaUI.start();
@@ -69,5 +74,14 @@ public class BibliotecaUITest {
         String userInput = "120";
         bibliotecaUI.selectMenuOption(userInput);
         assertThat(outContent.toString(),is(invalidMessage));
+    }
+
+    @Test
+    public void shouldSeeAllBooksIfSelectedAfterMainMenu() {
+        String userInput = "1";
+        InputStream inContent = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(inContent);
+        bibliotecaUI.start();
+        assertThat(outContent.toString(), endsWith(listOfAllBooksWithAuthorAndPublishedYear));
     }
 }

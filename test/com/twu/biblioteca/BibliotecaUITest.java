@@ -21,6 +21,7 @@ public class BibliotecaUITest {
             "An Ocean of Minutes | Thea Lim | 2018\n" +
             "The Descent of Monsters (The Tensorate Series) | JY Yang | 2018\n" +
             "Ponti | Sharlene Teo | 2018\n\n";
+    private final String invalidMessage = "Please select a valid option!\n";
 
     @Before
     public void setUpStreams() {
@@ -67,6 +68,6 @@ public class BibliotecaUITest {
     public void shouldSeeInvalidMessageWhenSelectedOptionIsInvalid() {
         String userInput = "120";
         bibliotecaUI.selectMenuOption(userInput);
-        assertThat(outContent.toString(),is("Please select a valid option!\n"));
+        assertThat(outContent.toString(),is(invalidMessage));
     }
 }

@@ -28,9 +28,10 @@ class BibliotecaUI {
     }
 
     public void selectMenuOption(String userInput) {
+        String invalidMessage = "Please select a valid option!";
         if (userInput == "1")
             printAllBooksWithAuthorAndPublishedYear();
         else
-            System.out.println("Please select a valid option!");
+            System.out.println(invalidMessage);
     }
 }

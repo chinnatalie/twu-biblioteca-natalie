@@ -7,7 +7,8 @@ public class BibliotecaApp {
     }
 
     public void printWelcomeMessage() {
-        System.out.println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!");
+        String welcomeMessage = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!";
+        System.out.println(welcomeMessage);
     }
 
     public void printAllBooks() {

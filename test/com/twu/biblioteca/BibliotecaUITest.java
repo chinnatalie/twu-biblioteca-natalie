@@ -9,7 +9,7 @@ import java.io.PrintStream;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-public class BibliotecaTest {
+public class BibliotecaUITest {
 
     private static BibliotecaUI bibliotecaUI;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();

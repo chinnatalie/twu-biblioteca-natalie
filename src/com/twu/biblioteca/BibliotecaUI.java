@@ -35,4 +35,9 @@ class BibliotecaUI {
                 "1) List of books";
         System.out.println(mainMenu);
     }
+
+    public void selectMenuOption(String userInput) {
+        if (userInput == "1")
+            printAllBooksWithAuthorAndPublishedYear();
+    }
 }

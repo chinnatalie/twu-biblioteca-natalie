@@ -66,4 +66,11 @@ public class BibliotecaTest {
         bibliotecaUI.start();
         assertThat(outContent.toString(),is(welcomeMessage + mainMenu));
     }
+
+    @Test
+    public void shouldSeeAllBooksIfSelectedFromMainMenu() {
+        String userInput = "1";
+        bibliotecaUI.selectMenuOption(userInput);
+        assertThat(outContent.toString(),is(listOfAllBooksWithAuthorAndPublishedYear));
+    }
 }

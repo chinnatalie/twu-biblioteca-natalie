@@ -62,8 +62,10 @@ public class BibliotecaTest {
     }
 
     @Test
-    public void shouldSeeWelcomeMessageThenAllBooksWithAuthorAndPublishedYear() {
+    public void shouldSeeWelcomeMessageThenMainMenu() {
         bibliotecaUI.start();
-        assertThat(outContent.toString(),is(welcomeMessage+listOfAllBooksWithAuthorAndPublishedYear));
+        String mainMenu = "------- Main menu -------\n" +
+                "1) List of books\n";
+        assertThat(outContent.toString(),is(welcomeMessage+mainMenu));
     }
 }

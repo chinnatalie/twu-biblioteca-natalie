@@ -4,7 +4,7 @@ class BibliotecaUI {
 
     public void start() {
         printWelcomeMessage();
-        printAllBooksWithAuthorAndPublishedYear();
+        printMainMenu();
     }
 
     public void printWelcomeMessage() {

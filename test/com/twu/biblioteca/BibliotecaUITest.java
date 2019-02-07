@@ -22,7 +22,8 @@ public class BibliotecaUITest {
 
     private final String welcomeMessage = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!\n";
     private final String mainMenu = "------- Main menu -------\n" +
-            "1) List of books\n";
+            "1) List of books\n" +
+            "2) Exit\n";
     private final String listOfAllBooksWithAuthorAndPublishedYear = "Rainbirds | Clarissa Goenawan | 2018\n" +
             "Bury What We Cannot Take | Kirsten Chen | 2018\n" +
             "An Ocean of Minutes | Thea Lim | 2018\n" +

@@ -11,7 +11,8 @@ class BibliotecaUI {
             "The Descent of Monsters (The Tensorate Series) | JY Yang | 2018\n" +
             "Ponti | Sharlene Teo | 2018\n";
     private String mainMenu = "------- Main menu -------\n" +
-            "1) List of books";
+            "1) List of books\n" +
+            "2) Exit";
     private String invalidMessage = "Please select a valid option!";
     private String exitMessage = "Exiting application";
 

@@ -11,7 +11,7 @@ import static org.hamcrest.core.Is.is;
 
 public class BibliotecaTest {
 
-    public static BibliotecaApp bibliotecaApp;
+    private static BibliotecaApp bibliotecaApp;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     @Before

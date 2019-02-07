@@ -38,7 +38,11 @@ public class BibliotecaShelf {
     }
 
     public String checkoutBook(String book) {
-        books.replace(book, Status.CHECKEDOUT);
-        return "Thank you! Enjoy the book";
+        if (books.get(book) == Status.AVAILABLE) {
+            books.replace(book, Status.CHECKEDOUT);
+            return "Thank you! Enjoy the book";
+        } else {
+            return "";
+        }
     }
 }

@@ -39,17 +39,6 @@ public class BibliotecaTest {
     }
 
     @Test
-    public void shouldSeeAllBooks() {
-        bibliotecaUI.printAllBooks();
-        String listOfAllBooks = "Rainbirds by Clarissa Goenawan\n" +
-                "Bury What We Cannot Take by Kirsten Chen\n" +
-                "An Ocean of Minutes by Thea Lim\n" +
-                "The Descent of Monsters (The Tensorate Series) by JY Yang\n" +
-                "Ponti by Sharlene Teo\n\n";
-        assertThat(outContent.toString(),is(listOfAllBooks));
-    }
-
-    @Test
     public void shouldSeeAllBooksWithAuthorAndPublishedYear() {
         bibliotecaUI.printAllBooksWithAuthorAndPublishedYear();
         assertThat(outContent.toString(),is(listOfAllBooksWithAuthorAndPublishedYear));

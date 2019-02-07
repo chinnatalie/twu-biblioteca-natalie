@@ -12,15 +12,6 @@ class BibliotecaUI {
         System.out.println(welcomeMessage);
     }
 
-    public void printAllBooks() {
-        String listOfAllBooks = "Rainbirds by Clarissa Goenawan\n" +
-                "Bury What We Cannot Take by Kirsten Chen\n" +
-                "An Ocean of Minutes by Thea Lim\n" +
-                "The Descent of Monsters (The Tensorate Series) by JY Yang\n" +
-                "Ponti by Sharlene Teo\n";
-        System.out.println(listOfAllBooks);
-    }
-
     public void printAllBooksWithAuthorAndPublishedYear() {
         String listOfAllBooksWithAuthorAndPublishedYear = "Rainbirds | Clarissa Goenawan | 2018\n" +
                 "Bury What We Cannot Take | Kirsten Chen | 2018\n" +

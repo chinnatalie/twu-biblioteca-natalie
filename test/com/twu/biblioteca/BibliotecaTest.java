@@ -11,7 +11,7 @@ import static org.hamcrest.core.Is.is;
 
 public class BibliotecaTest {
 
-    private static BibliotecaApp bibliotecaApp;
+    private static BibliotecaUI bibliotecaUI;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     @Before
@@ -21,18 +21,18 @@ public class BibliotecaTest {
 
     @Before
     public void initializeBibliotecaApp() {
-        bibliotecaApp = new BibliotecaApp();
+        bibliotecaUI = new BibliotecaUI();
     }
 
     @Test
     public void shouldSeeWelcomeMessage() {
-        bibliotecaApp.printWelcomeMessage();
+        bibliotecaUI.printWelcomeMessage();
         assertThat(outContent.toString(),is("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!\n"));
     }
 
     @Test
     public void shouldSeeAllBooks() {
-        bibliotecaApp.printAllBooks();
+        bibliotecaUI.printAllBooks();
         String listOfAllBooks = "Rainbirds by Clarissa Goenawan\n" +
                 "Bury What We Cannot Take by Kirsten Chen\n" +
                 "An Ocean of Minutes by Thea Lim\n" +
@@ -43,7 +43,7 @@ public class BibliotecaTest {
 
     @Test
     public void shouldSeeAllBooksWithAuthorAndPublishedYear() {
-        bibliotecaApp.printAllBooksWithAuthorAndPublishedYear();
+        bibliotecaUI.printAllBooksWithAuthorAndPublishedYear();
         String listOfAllBooksWithAuthorAndPublishedYear = "Rainbirds | Clarissa Goenawan | 2018\n" +
                 "Bury What We Cannot Take | Kirsten Chen | 2018\n" +
                 "An Ocean of Minutes | Thea Lim | 2018\n" +

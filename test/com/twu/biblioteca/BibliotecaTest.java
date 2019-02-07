@@ -13,6 +13,7 @@ public class BibliotecaTest {
 
     private static BibliotecaUI bibliotecaUI;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final String welcomeMessage = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!\n";
 
     @Before
     public void setUpStreams() {
@@ -27,7 +28,7 @@ public class BibliotecaTest {
     @Test
     public void shouldSeeWelcomeMessage() {
         bibliotecaUI.printWelcomeMessage();
-        assertThat(outContent.toString(),is("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!\n"));
+        assertThat(outContent.toString(),is(welcomeMessage));
     }
 
     @Test
@@ -55,7 +56,6 @@ public class BibliotecaTest {
     @Test
     public void shouldSeeWelcomeMessageThenAllBooksWithAuthorAndPublishedYear() {
         bibliotecaUI.start();
-        String welcomeMessage = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!\n";
         String listOfAllBooksWithAuthorAndPublishedYear = "Rainbirds | Clarissa Goenawan | 2018\n" +
                 "Bury What We Cannot Take | Kirsten Chen | 2018\n" +
                 "An Ocean of Minutes | Thea Lim | 2018\n" +

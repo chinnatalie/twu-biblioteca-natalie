@@ -38,6 +38,7 @@ public class BibliotecaUITest {
     private final String failureCheckoutMessage = "Sorry, that book is not available";
     private final String checkoutBookQuestion = "Which book do you want to check out?";
     private final String returnBookQuestion = "Which book do you want to return?";
+    private final String successReturnMessage = "Thank you for returning the book";
     private final String bookName = "The Descent of Monsters (The Tensorate Series) | JY Yang | 2018";
 
     @Before
@@ -144,7 +145,7 @@ public class BibliotecaUITest {
     public void shouldSeeSuccessMessageOnReturn() {
         bibliotecaUI.checkoutBook(bookName);
         bibliotecaUI.returnBook(bookName);
-        assertThat(outContent.toString(), containsString("Thank you for returning the book"));
+        assertThat(outContent.toString(), containsString(successReturnMessage));
     }
 
     @Test

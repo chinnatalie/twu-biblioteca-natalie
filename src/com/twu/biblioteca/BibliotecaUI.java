@@ -19,25 +19,25 @@ class BibliotecaUI {
         shelf = new BibliotecaShelf();
     }
 
-    public void start() {
+    void start() {
         printWelcomeMessage();
         printMainMenu();
         selectMenuOption();
     }
 
-    public void printWelcomeMessage() {
+    void printWelcomeMessage() {
         System.out.println(welcomeMessage);
     }
 
-    public void printAllBooksWithAuthorAndPublishedYear() {
+    void printAllBooksWithAuthorAndPublishedYear() {
         System.out.println(shelf.getAllBooks());
     }
 
-    public void printMainMenu() {
+    void printMainMenu() {
         System.out.println(mainMenu);
     }
 
-    public void selectMenuOption() {
+    void selectMenuOption() {
         Scanner scanner = new Scanner(System.in);
         while(true) {
             Integer selection = Integer.parseInt(scanner.next());
@@ -60,7 +60,7 @@ class BibliotecaUI {
         }
     }
 
-    public void returnBook(String bookName) {
+    void returnBook(String bookName) {
         switch (shelf.returnBook(bookName)) {
             case SUCCESS:
                 System.out.println("Thank you for returning the book");
@@ -71,7 +71,7 @@ class BibliotecaUI {
         }
     }
 
-    public void checkoutBook(String bookName) {
+    void checkoutBook(String bookName) {
         switch (shelf.checkoutBook(bookName)) {
             case SUCCESS:
                 System.out.println("Thank you! Enjoy the book");

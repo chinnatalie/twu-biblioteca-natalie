@@ -80,7 +80,8 @@ class BibliotecaUI {
     }
 
     void checkoutBook(String bookName) {
-        switch (shelf.checkoutBook(bookName)) {
+        CheckoutStatus checkoutStatus = shelf.checkoutBook(bookName);
+        switch (checkoutStatus) {
             case SUCCESS:
                 System.out.println(successCheckoutMessage);
                 break;

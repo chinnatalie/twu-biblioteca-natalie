@@ -36,7 +36,7 @@ public class BibliotecaShelfTest {
     }
 
     @Test
-    public void shouldReturnSuccessMessageOnCheckout() {
-        assertThat(bibliotecaShelf.checkoutBook("Rainbirds | Clarissa Goenawan | 2018"), is("Thank you! Enjoy the book"));
+    public void shouldReturnSuccesStatusOnCheckout() {
+        assertThat(bibliotecaShelf.checkoutBook("Rainbirds | Clarissa Goenawan | 2018"), is(CheckoutStatus.SUCCESS));
     }
 }

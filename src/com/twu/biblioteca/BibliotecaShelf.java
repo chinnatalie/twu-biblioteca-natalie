@@ -3,6 +3,8 @@ package com.twu.biblioteca;
 import java.util.Map;
 import java.util.TreeMap;
 
+enum CheckoutStatus {SUCCESS, FAILURE};
+
 public class BibliotecaShelf {
 
     private enum Status {AVAILABLE, CHECKEDOUT};
@@ -37,12 +39,12 @@ public class BibliotecaShelf {
         return result;
     }
 
-    public String checkoutBook(String book) {
+    public CheckoutStatus checkoutBook(String book) {
         if (books.get(book) == Status.AVAILABLE) {
             books.replace(book, Status.CHECKEDOUT);
-            return "Thank you! Enjoy the book";
+            return CheckoutStatus.SUCCESS;
         } else {
-            return "";
+            return CheckoutStatus.FAILURE;
         }
     }
 }

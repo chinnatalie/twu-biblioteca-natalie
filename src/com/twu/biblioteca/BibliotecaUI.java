@@ -52,7 +52,12 @@ class BibliotecaUI {
     }
 
     public void checkoutBook(String bookName) {
-        String result = shelf.checkoutBook(bookName);
-        System.out.println(result);
+        switch (shelf.checkoutBook(bookName)) {
+            case SUCCESS:
+                System.out.println("Thank you! Enjoy the book");
+                break;
+            case FAILURE:
+                break;
+        }
     }
 }

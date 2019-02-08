@@ -32,7 +32,8 @@ public class BibliotecaUITest {
             "Ponti | Sharlene Teo | 2018\n" +
             "Rainbirds | Clarissa Goenawan | 2018\n" +
             "The Descent of Monsters (The Tensorate Series) | JY Yang | 2018\n\n";
-    private final String invalidMessage = "Please select a valid option!\n";
+    private final String invalidOptionMessage = "Please select a valid option!\n";
+
     private final String bookName = "The Descent of Monsters (The Tensorate Series) | JY Yang | 2018";
 
     @Before
@@ -91,7 +92,7 @@ public class BibliotecaUITest {
     public void shouldSeeInvalidMessageWhenSelectedOptionIsInvalid() {
         givenUserInputs(Arrays.asList("120", "0"));
         bibliotecaUI.selectMenuOption();
-        assertThat(outContent.toString(),startsWith(invalidMessage));
+        assertThat(outContent.toString(),startsWith(invalidOptionMessage));
     }
 
     @Test

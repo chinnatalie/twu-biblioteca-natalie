@@ -90,7 +90,7 @@ public class BibliotecaUITest {
     public void shouldSeeAllBooksIfSelectedAfterMainMenu() {
         givenUserInputs("1\n0");
         bibliotecaUI.start();
-        assertThat(outContent.toString(), startsWith(welcomeMessage + mainMenu + listOfAllBooksWithAuthorAndPublishedYear));
+        assertThat(outContent.toString(), containsString(mainMenu + listOfAllBooksWithAuthorAndPublishedYear));
     }
 
     @Test

@@ -49,4 +49,10 @@ public class BibliotecaShelfTest {
                 "The Descent of Monsters (The Tensorate Series) | JY Yang | 2018\n";
         assertThat(bibliotecaShelf.getAllAvailableBooks(), is(updatedList));
     }
+
+    @Test
+    public void shouldReturnFailureStatusONCheckoutIfUnavailable() {
+        bibliotecaShelf.checkoutBook("Ponti | Sharlene Teo | 2018");
+        assertThat(bibliotecaShelf.checkoutBook("Ponti | Sharlene Teo | 2018"), is(CheckoutStatus.FAILURE));
+    }
 }

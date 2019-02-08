@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 
 enum CheckoutStatus {SUCCESS, FAILURE};
@@ -22,7 +23,8 @@ public class BibliotecaShelf {
 
     public String getAllBooks() {
         String result = "";
-        for (String book: books.keySet()) {
+        Set<String> listOfAllBooks = books.keySet();
+        for (String book: listOfAllBooks) {
             result += book;
             result += "\n";
         }

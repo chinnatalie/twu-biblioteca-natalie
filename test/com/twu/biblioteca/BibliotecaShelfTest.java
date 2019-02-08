@@ -60,4 +60,9 @@ public class BibliotecaShelfTest {
     public void shouldReturnFailureStatusOnCheckoutIfNonExistent() {
         assertThat(bibliotecaShelf.checkoutBook("The Great Gatsby"), is(CheckoutStatus.FAILURE));
     }
+
+    @Test
+    public void shouldReturnSuccessStatusOnReturn() {
+        assertThat(bibliotecaShelf.returnBook("Ponti | Sharlene Teo | 2018"), is(ReturnStatus.SUCCESS));
+    }
 }

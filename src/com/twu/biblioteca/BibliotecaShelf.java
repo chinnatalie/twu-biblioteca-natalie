@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 enum CheckoutStatus {SUCCESS, FAILURE};
+enum ReturnStatus {SUCCESS};
 
 public class BibliotecaShelf {
 
@@ -51,5 +52,9 @@ public class BibliotecaShelf {
         } catch (Exception e) {
             return CheckoutStatus.FAILURE;
         }
+    }
+
+    public ReturnStatus returnBook(String bookName) {
+        return ReturnStatus.SUCCESS;
     }
 }

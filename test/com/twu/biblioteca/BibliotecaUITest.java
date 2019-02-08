@@ -36,6 +36,7 @@ public class BibliotecaUITest {
     private final String invalidOptionMessage = "Please select a valid option!\n";
     private final String successCheckoutMessage = "Thank you! Enjoy the book\n";
     private final String failureCheckoutMessage = "Sorry, that book is not available";
+    private final String checkoutBookQuestion = "Which book do you want to check out?";
     private final String bookName = "The Descent of Monsters (The Tensorate Series) | JY Yang | 2018";
 
     @Before
@@ -114,7 +115,7 @@ public class BibliotecaUITest {
     @Test
     public void shouldSeeSuccessMessageOnCheckout() {
         bibliotecaUI.checkoutBook(bookName);
-        assertThat(outContent.toString(), containsString(successCheckOutMessage));
+        assertThat(outContent.toString(), containsString(successCheckoutMessage));
     }
 
     @Test
@@ -128,7 +129,7 @@ public class BibliotecaUITest {
     public void shouldAskForBookToCheckout() {
         givenUserInputs(Arrays.asList("1", "2", "Ponti", "0"));
         bibliotecaUI.start();
-        assertThat(outContent.toString(), containsString("Which book do you want to check out?"));
+        assertThat(outContent.toString(), containsString(checkoutBookQuestion));
     }
 
     @Test

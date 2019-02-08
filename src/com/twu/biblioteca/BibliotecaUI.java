@@ -47,6 +47,10 @@ class BibliotecaUI {
                 System.out.println("Which book do you want to check out?");
                 checkoutBook(scanner.next());
             }
+            else if (selection == 3) {
+                System.out.println("Which book do you want to return?");
+                returnBook(scanner.next());
+            }
             else if (selection == 0) {
                 System.out.println(exitMessage);
                 break;
@@ -54,6 +58,10 @@ class BibliotecaUI {
             else
                 System.out.println(invalidMessage);
         }
+    }
+
+    private void returnBook(String bookName) {
+
     }
 
     public void checkoutBook(String bookName) {

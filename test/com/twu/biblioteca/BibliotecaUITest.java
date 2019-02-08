@@ -120,4 +120,11 @@ public class BibliotecaUITest {
         bibliotecaUI.start();
         assertThat(outContent.toString(), containsString("Which book do you want to check out?"));
     }
+
+    @Test
+    public void shouldAskForBookToReturn() {
+        givenUserInputs("3\nPonti\n0\n");
+        bibliotecaUI.start();
+        assertThat(outContent.toString(), containsString("Which book do you want to return?"));
+    }
 }

@@ -33,15 +33,15 @@ class BibliotecaUI {
     }
 
     void printWelcomeMessage() {
-        System.out.println(welcomeMessage);
+        print(welcomeMessage);
     }
 
     void printAllBooksWithAuthorAndPublishedYear() {
-        System.out.println(shelf.getAllBooks());
+        print(shelf.getAllBooks());
     }
 
     void printMainMenu() {
-        System.out.println(mainMenu);
+        print(mainMenu);
     }
 
     void selectMenuOption() {
@@ -51,19 +51,19 @@ class BibliotecaUI {
             if (selection == 1)
                 printAllBooksWithAuthorAndPublishedYear();
             else if (selection == 2) {
-                System.out.println(checkoutBookQuestion);
+                print(checkoutBookQuestion);
                 checkoutBook(scanner.next());
             }
             else if (selection == 3) {
-                System.out.println(returnBookQuestion);
+                print(returnBookQuestion);
                 returnBook(scanner.next());
             }
             else if (selection == 0) {
-                System.out.println(exitMessage);
+                print(exitMessage);
                 break;
             }
             else
-                System.out.println(invalidOptionMessage);
+                print(invalidOptionMessage);
         }
     }
 
@@ -71,10 +71,10 @@ class BibliotecaUI {
         ReturnStatus returnStatus = shelf.returnBook(bookName);
         switch (returnStatus) {
             case SUCCESS:
-                System.out.println(successReturnMessage);
+                print(successReturnMessage);
                 break;
             case FAILURE:
-                System.out.println(failureReturnMessage);
+                print(failureReturnMessage);
                 break;
         }
     }
@@ -83,11 +83,15 @@ class BibliotecaUI {
         CheckoutStatus checkoutStatus = shelf.checkoutBook(bookName);
         switch (checkoutStatus) {
             case SUCCESS:
-                System.out.println(successCheckoutMessage);
+                print(successCheckoutMessage);
                 break;
             case FAILURE:
-                System.out.println(failureCheckoutMessage);
+                print(failureCheckoutMessage);
                 break;
         }
+    }
+
+    private void print(String message) {
+        System.out.println(message);
     }
 }

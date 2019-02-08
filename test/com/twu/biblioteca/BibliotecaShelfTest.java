@@ -36,7 +36,17 @@ public class BibliotecaShelfTest {
     }
 
     @Test
-    public void shouldReturnSuccesStatusOnCheckout() {
+    public void shouldReturnSuccessStatusOnCheckout() {
         assertThat(bibliotecaShelf.checkoutBook("Rainbirds | Clarissa Goenawan | 2018"), is(CheckoutStatus.SUCCESS));
+    }
+
+    @Test
+    public void shouldNotSeeBookAfterCheckout() {
+        bibliotecaShelf.checkoutBook("Ponti | Sharlene Teo | 2018");
+        String updatedList = "An Ocean of Minutes | Thea Lim | 2018\n" +
+                "Bury What We Cannot Take | Kirsten Chen | 2018\n" +
+                "Rainbirds | Clarissa Goenawan | 2018\n" +
+                "The Descent of Monsters (The Tensorate Series) | JY Yang | 2018\n";
+        assertThat(bibliotecaShelf.getAllAvailableBooks(), is(updatedList));
     }
 }

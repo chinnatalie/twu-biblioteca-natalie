@@ -4,12 +4,12 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
-enum CheckoutStatus {SUCCESS, FAILURE};
-enum ReturnStatus {SUCCESS, FAILURE};
+enum CheckoutStatus {SUCCESS, FAILURE}
+enum ReturnStatus {SUCCESS, FAILURE}
 
 public class BibliotecaShelf {
 
-    private enum AvailabilityStatus {AVAILABLE, CHECKEDOUT};
+    private enum AvailabilityStatus {AVAILABLE, CHECKEDOUT}
     private TreeMap<String, AvailabilityStatus> books;
 
     BibliotecaShelf() {

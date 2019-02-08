@@ -16,6 +16,8 @@ class BibliotecaUI {
     private String exitMessage = "Exiting application";
     private String checkoutBookQuestion = "Which book do you want to check out?";
     private String returnBookQuestion = "Which book do you want to return?";
+    private String successReturnMessage = "Thank you for returning the book";
+
 
     BibliotecaUI() {
         shelf = new BibliotecaShelf();
@@ -65,7 +67,7 @@ class BibliotecaUI {
     void returnBook(String bookName) {
         switch (shelf.returnBook(bookName)) {
             case SUCCESS:
-                System.out.println("Thank you for returning the book");
+                System.out.println(successReturnMessage);
                 break;
             case FAILURE:
                 System.out.println("That is not a valid book to return.");

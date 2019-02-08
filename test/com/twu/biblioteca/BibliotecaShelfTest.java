@@ -51,8 +51,13 @@ public class BibliotecaShelfTest {
     }
 
     @Test
-    public void shouldReturnFailureStatusONCheckoutIfUnavailable() {
+    public void shouldReturnFailureStatusOnCheckoutIfUnavailable() {
         bibliotecaShelf.checkoutBook("Ponti | Sharlene Teo | 2018");
         assertThat(bibliotecaShelf.checkoutBook("Ponti | Sharlene Teo | 2018"), is(CheckoutStatus.FAILURE));
+    }
+
+    @Test
+    public void shouldReturnFailureStatusOnCheckoutIfNonExistent() {
+        assertThat(bibliotecaShelf.checkoutBook("The Great Gatsby"), is(CheckoutStatus.FAILURE));
     }
 }

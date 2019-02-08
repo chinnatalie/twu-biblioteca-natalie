@@ -14,6 +14,8 @@ class BibliotecaUI {
             "0) Exit";
     private String invalidOptionMessage = "Please select a valid option!";
     private String exitMessage = "Exiting application";
+    private String checkoutBookQuestion = "Which book do you want to check out?";
+    private String returnBookQuestion = "Which book do you want to return?";
 
     BibliotecaUI() {
         shelf = new BibliotecaShelf();
@@ -44,11 +46,11 @@ class BibliotecaUI {
             if (selection == 1)
                 printAllBooksWithAuthorAndPublishedYear();
             else if (selection == 2) {
-                System.out.println("Which book do you want to check out?");
+                System.out.println(checkoutBookQuestion);
                 checkoutBook(scanner.next());
             }
             else if (selection == 3) {
-                System.out.println("Which book do you want to return?");
+                System.out.println(returnBookQuestion);
                 returnBook(scanner.next());
             }
             else if (selection == 0) {

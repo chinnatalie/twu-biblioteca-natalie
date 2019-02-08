@@ -39,6 +39,7 @@ public class BibliotecaUITest {
     private final String checkoutBookQuestion = "Which book do you want to check out?";
     private final String returnBookQuestion = "Which book do you want to return?";
     private final String successReturnMessage = "Thank you for returning the book";
+    private final String failureReturnMessage = "That is not a valid book to return.";
     private final String bookName = "The Descent of Monsters (The Tensorate Series) | JY Yang | 2018";
 
     @Before
@@ -151,6 +152,6 @@ public class BibliotecaUITest {
     @Test
     public void shouldSeeFailureMessageOnReturn() {
         bibliotecaUI.returnBook(bookName);
-        assertThat(outContent.toString(), containsString("That is not a valid book to return."));
+        assertThat(outContent.toString(), containsString(failureReturnMessage));
     }
 }

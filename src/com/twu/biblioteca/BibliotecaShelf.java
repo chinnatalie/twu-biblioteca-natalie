@@ -40,8 +40,8 @@ public class BibliotecaShelf {
     }
 
     public CheckoutStatus checkoutBook(String bookName) {
-        AvailabilityStatus availability = books.get(bookName);
-        if (availability == AvailabilityStatus.AVAILABLE) {
+        AvailabilityStatus bookAvailability = books.get(bookName);
+        if (bookAvailability.equals(AvailabilityStatus.AVAILABLE)) {
             books.replace(bookName, AvailabilityStatus.CHECKEDOUT);
             return CheckoutStatus.SUCCESS;
         } else {

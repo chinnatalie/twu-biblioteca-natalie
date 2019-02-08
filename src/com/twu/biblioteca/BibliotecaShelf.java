@@ -21,7 +21,7 @@ public class BibliotecaShelf {
         books.put("Ponti | Sharlene Teo | 2018", AvailabilityStatus.AVAILABLE);
     }
 
-    public String getAllBooks() {
+    String getAllBooks() {
         String result = "";
         Set<String> listOfAllBooks = books.keySet();
         for (String book: listOfAllBooks) {
@@ -31,7 +31,7 @@ public class BibliotecaShelf {
         return result;
     }
 
-    public String getAllAvailableBooks() {
+    String getAllAvailableBooks() {
         String result = "";
         Set<Map.Entry<String, AvailabilityStatus>> listOfAllBooksWithStatus = books.entrySet();
         for (Map.Entry<String, AvailabilityStatus> entry: listOfAllBooksWithStatus) {
@@ -43,7 +43,7 @@ public class BibliotecaShelf {
         return result;
     }
 
-    public CheckoutStatus checkoutBook(String bookName) {
+    CheckoutStatus checkoutBook(String bookName) {
         try {
             AvailabilityStatus bookAvailability = books.get(bookName);
             if (isAvailable(bookAvailability)) {
@@ -57,7 +57,7 @@ public class BibliotecaShelf {
         }
     }
 
-    public ReturnStatus returnBook(String bookName) {
+    ReturnStatus returnBook(String bookName) {
         try {
             AvailabilityStatus bookAvailability = books.get(bookName);
             if (isNotAvailable(bookAvailability)) {

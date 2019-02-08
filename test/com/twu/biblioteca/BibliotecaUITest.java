@@ -31,6 +31,7 @@ public class BibliotecaUITest {
             "Rainbirds | Clarissa Goenawan | 2018\n" +
             "The Descent of Monsters (The Tensorate Series) | JY Yang | 2018\n\n";
     private final String invalidMessage = "Please select a valid option!\n";
+    private final String bookName = "The Descent of Monsters (The Tensorate Series) | JY Yang | 2018";
 
     @Before
     public void setUpStreams() {
@@ -102,14 +103,14 @@ public class BibliotecaUITest {
 
     @Test
     public void shouldSeeSuccessMessageOnCheckout() {
-        bibliotecaUI.checkoutBook("The Descent of Monsters (The Tensorate Series) | JY Yang | 2018");
+        bibliotecaUI.checkoutBook(bookName);
         assertThat(outContent.toString(), containsString("Thank you! Enjoy the book\n"));
     }
 
     @Test
     public void shouldSeeFailureMessageOnCheckout() {
-        bibliotecaUI.checkoutBook("The Descent of Monsters (The Tensorate Series) | JY Yang | 2018");
-        bibliotecaUI.checkoutBook("The Descent of Monsters (The Tensorate Series) | JY Yang | 2018");
+        bibliotecaUI.checkoutBook(bookName);
+        bibliotecaUI.checkoutBook(bookName);
         assertThat(outContent.toString(), containsString("Sorry, that book is not available"));
     }
 }

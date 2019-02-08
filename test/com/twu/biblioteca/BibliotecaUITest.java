@@ -101,8 +101,15 @@ public class BibliotecaUITest {
     }
 
     @Test
-    public void shouldSeeSucessMessageOnCheckout() {
+    public void shouldSeeSuccessMessageOnCheckout() {
         bibliotecaUI.checkoutBook("The Descent of Monsters (The Tensorate Series) | JY Yang | 2018");
         assertThat(outContent.toString(), containsString("Thank you! Enjoy the book\n"));
+    }
+
+    @Test
+    public void shouldSeeFailureMessageOnCheckout() {
+        bibliotecaUI.checkoutBook("The Descent of Monsters (The Tensorate Series) | JY Yang | 2018");
+        bibliotecaUI.checkoutBook("The Descent of Monsters (The Tensorate Series) | JY Yang | 2018");
+        assertThat(outContent.toString(), containsString("Sorry, that book is not available"));
     }
 }

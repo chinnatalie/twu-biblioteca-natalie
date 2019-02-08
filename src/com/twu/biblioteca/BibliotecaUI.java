@@ -57,6 +57,7 @@ class BibliotecaUI {
                 System.out.println("Thank you! Enjoy the book");
                 break;
             case FAILURE:
+                System.out.println("Sorry, that book is not available");
                 break;
         }
     }

@@ -50,4 +50,9 @@ class BibliotecaUI {
                 System.out.println(invalidMessage);
         }
     }
+
+    public void checkoutBook(String bookName) {
+        String result = shelf.checkoutBook(bookName);
+        System.out.println(result);
+    }
 }

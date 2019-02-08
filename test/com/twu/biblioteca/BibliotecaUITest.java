@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import org.hamcrest.core.StringContains;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,8 +13,7 @@ import static org.hamcrest.core.StringEndsWith.endsWith;
 import static org.hamcrest.core.StringStartsWith.startsWith;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.core.Is.is;
-
-
+import static org.hamcrest.core.StringContains.containsString;
 
 public class BibliotecaUITest {
 
@@ -101,7 +101,8 @@ public class BibliotecaUITest {
     }
 
     @Test
-    public void shouldAskUserWhichBookToCheckout() {
-        givenUserInputs("1\n");
+    public void shouldSeeSucessMessageOnCheckout() {
+        bibliotecaUI.checkoutBook("The Descent of Monsters (The Tensorate Series) | JY Yang | 2018");
+        assertThat(outContent.toString(), containsString("Thank you! Enjoy the book\n"));
     }
 }

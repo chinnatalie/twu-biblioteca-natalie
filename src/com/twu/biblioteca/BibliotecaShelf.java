@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 enum CheckoutStatus {SUCCESS, FAILURE};
-enum ReturnStatus {SUCCESS};
+enum ReturnStatus {SUCCESS, FAILURE};
 
 public class BibliotecaShelf {
 
@@ -55,7 +55,12 @@ public class BibliotecaShelf {
     }
 
     public ReturnStatus returnBook(String bookName) {
-        books.replace(bookName, AvailabilityStatus.AVAILABLE);
-        return ReturnStatus.SUCCESS;
+        AvailabilityStatus bookAvailability = books.get(bookName);
+        if (bookAvailability.equals(AvailabilityStatus.CHECKEDOUT)) {
+            books.replace(bookName, AvailabilityStatus.AVAILABLE);
+            return ReturnStatus.SUCCESS;
+        } else {
+            return ReturnStatus.FAILURE;
+        }
     }
 }

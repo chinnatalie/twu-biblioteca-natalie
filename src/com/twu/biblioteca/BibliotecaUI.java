@@ -19,6 +19,7 @@ class BibliotecaUI {
     private String successReturnMessage = "Thank you for returning the book";
     private String failureReturnMessage = "That is not a valid book to return.";
     private String successCheckoutMessage = "Thank you! Enjoy the book";
+    private String failureCheckoutMessage = "Sorry, that book is not available";
 
 
     BibliotecaUI() {
@@ -83,7 +84,7 @@ class BibliotecaUI {
                 System.out.println(successCheckoutMessage);
                 break;
             case FAILURE:
-                System.out.println("Sorry, that book is not available");
+                System.out.println(failureCheckoutMessage);
                 break;
         }
     }

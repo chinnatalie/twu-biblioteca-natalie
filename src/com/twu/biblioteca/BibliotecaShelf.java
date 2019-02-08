@@ -33,7 +33,8 @@ public class BibliotecaShelf {
 
     public String getAllAvailableBooks() {
         String result = "";
-        for (Map.Entry<String, AvailabilityStatus> entry: books.entrySet()) {
+        Set<Map.Entry<String, AvailabilityStatus>> listOfAllBooksWithStatus = books.entrySet();
+        for (Map.Entry<String, AvailabilityStatus> entry: listOfAllBooksWithStatus) {
             if (entry.getValue() == AvailabilityStatus.AVAILABLE) {
                 result += entry.getKey();
                 result += "\n";

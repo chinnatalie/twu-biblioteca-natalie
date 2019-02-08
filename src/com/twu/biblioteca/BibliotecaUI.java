@@ -60,8 +60,8 @@ class BibliotecaUI {
         }
     }
 
-    private void returnBook(String bookName) {
-
+    public void returnBook(String bookName) {
+        System.out.println("Thank you for returning the book");
     }
 
     public void checkoutBook(String bookName) {

@@ -127,4 +127,11 @@ public class BibliotecaUITest {
         bibliotecaUI.start();
         assertThat(outContent.toString(), containsString("Which book do you want to return?"));
     }
+
+    @Test
+    public void shouldSeeSuccessMessageOnReturn() {
+        bibliotecaUI.checkoutBook(bookName);
+        bibliotecaUI.returnBook(bookName);
+        assertThat(outContent.toString(), containsString("Thank you for returning the book"));
+    }
 }

@@ -12,7 +12,7 @@ class BibliotecaUI {
             "2) Checkout book\n" +
             "3) Return book\n" +
             "0) Exit";
-    private String invalidMessage = "Please select a valid option!";
+    private String invalidOptionMessage = "Please select a valid option!";
     private String exitMessage = "Exiting application";
 
     BibliotecaUI() {
@@ -56,7 +56,7 @@ class BibliotecaUI {
                 break;
             }
             else
-                System.out.println(invalidMessage);
+                System.out.println(invalidOptionMessage);
         }
     }
 

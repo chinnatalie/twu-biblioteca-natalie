@@ -22,6 +22,7 @@ public class BibliotecaUITest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     private final String welcomeMessage = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!\n";
+    private final String exitMessage = "Exiting application\n";
     private final String mainMenu = "------- Main menu -------\n" +
             "1) List of books\n" +
             "2) Checkout book\n" +
@@ -33,7 +34,7 @@ public class BibliotecaUITest {
             "Rainbirds | Clarissa Goenawan | 2018\n" +
             "The Descent of Monsters (The Tensorate Series) | JY Yang | 2018\n\n";
     private final String invalidOptionMessage = "Please select a valid option!\n";
-
+    private final String successfulCheckOutMessage = "Thank you! Enjoy the book\n";
     private final String bookName = "The Descent of Monsters (The Tensorate Series) | JY Yang | 2018";
 
     @Before
@@ -106,13 +107,13 @@ public class BibliotecaUITest {
     public void shouldQuitApplicationIfSelected() {
         givenUserInputs(Arrays.asList("1", "1", "1", "0"));
         bibliotecaUI.start();
-        assertThat(outContent.toString(),endsWith("Exiting application\n"));
+        assertThat(outContent.toString(),endsWith(exitMessage));
     }
 
     @Test
     public void shouldSeeSuccessMessageOnCheckout() {
         bibliotecaUI.checkoutBook(bookName);
-        assertThat(outContent.toString(), containsString("Thank you! Enjoy the book\n"));
+        assertThat(outContent.toString(), containsString(successfulCheckOutMessage));
     }
 
     @Test

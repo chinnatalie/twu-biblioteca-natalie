@@ -23,6 +23,7 @@ public class BibliotecaUITest {
     private final String mainMenu = "------- Main menu -------\n" +
             "1) List of books\n" +
             "2) Checkout book\n" +
+            "3) Return book\n" +
             "0) Exit\n";
     private final String listOfAllBooksWithAuthorAndPublishedYear = "An Ocean of Minutes | Thea Lim | 2018\n" +
             "Bury What We Cannot Take | Kirsten Chen | 2018\n" +

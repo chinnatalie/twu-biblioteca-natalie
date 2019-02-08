@@ -10,6 +10,7 @@ class BibliotecaUI {
     private String mainMenu = "------- Main menu -------\n" +
             "1) List of books\n" +
             "2) Checkout book\n" +
+            "3) Return book\n" +
             "0) Exit";
     private String invalidMessage = "Please select a valid option!";
     private String exitMessage = "Exiting application";

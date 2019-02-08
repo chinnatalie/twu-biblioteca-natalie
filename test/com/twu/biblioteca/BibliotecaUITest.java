@@ -7,6 +7,8 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.hamcrest.core.StringEndsWith.endsWith;
 import static org.hamcrest.core.StringStartsWith.startsWith;
@@ -38,8 +40,13 @@ public class BibliotecaUITest {
         System.setOut(new PrintStream(outContent));
     }
 
-    private void givenUserInputs(String userInput) {
-        InputStream inContent = new ByteArrayInputStream(userInput.getBytes());
+    private void givenUserInputs(List<String> userInputs) {
+        String stringOfInputs = "";
+        for(String input: userInputs) {
+            stringOfInputs += input;
+            stringOfInputs += "\n";
+        }
+        InputStream inContent = new ByteArrayInputStream(stringOfInputs.getBytes());
         System.setIn(inContent);
     }
 
@@ -68,35 +75,35 @@ public class BibliotecaUITest {
 
     @Test
     public void shouldSeeWelcomeMessageThenMainMenu() {
-        givenUserInputs("1\n0");
+        givenUserInputs(Arrays.asList("1", "0"));
         bibliotecaUI.start();
         assertThat(outContent.toString(),startsWith(welcomeMessage + mainMenu));
     }
 
     @Test
     public void shouldSeeAllBooksIfSelectedFromMainMenu() {
-        givenUserInputs("1\n0");
+        givenUserInputs(Arrays.asList("1", "0"));
         bibliotecaUI.selectMenuOption();
         assertThat(outContent.toString(),startsWith(listOfAllBooksWithAuthorAndPublishedYear));
     }
 
     @Test
     public void shouldSeeInvalidMessageWhenSelectedOptionIsInvalid() {
-        givenUserInputs("120\n0");
+        givenUserInputs(Arrays.asList("120", "0"));
         bibliotecaUI.selectMenuOption();
         assertThat(outContent.toString(),startsWith(invalidMessage));
     }
 
     @Test
     public void shouldSeeAllBooksIfSelectedAfterMainMenu() {
-        givenUserInputs("1\n0");
+        givenUserInputs(Arrays.asList("1", "0"));
         bibliotecaUI.start();
         assertThat(outContent.toString(), containsString(mainMenu + listOfAllBooksWithAuthorAndPublishedYear));
     }
 
     @Test
     public void shouldQuitApplicationIfSelected() {
-        givenUserInputs("1\n1\n1\n0");
+        givenUserInputs(Arrays.asList("1", "1", "1", "0"));
         bibliotecaUI.start();
         assertThat(outContent.toString(),endsWith("Exiting application\n"));
     }
@@ -116,14 +123,14 @@ public class BibliotecaUITest {
 
     @Test
     public void shouldAskForBookToCheckout() {
-        givenUserInputs("1\n2\nPonti\n0");
+        givenUserInputs(Arrays.asList("1", "2", "Ponti", "0"));
         bibliotecaUI.start();
         assertThat(outContent.toString(), containsString("Which book do you want to check out?"));
     }
 
     @Test
     public void shouldAskForBookToReturn() {
-        givenUserInputs("3\nPonti\n0\n");
+        givenUserInputs(Arrays.asList("3", "Ponti", "0"));
         bibliotecaUI.start();
         assertThat(outContent.toString(), containsString("Which book do you want to return?"));
     }

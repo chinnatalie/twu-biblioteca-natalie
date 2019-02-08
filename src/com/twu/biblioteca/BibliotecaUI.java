@@ -42,8 +42,10 @@ class BibliotecaUI {
             Integer selection = Integer.parseInt(scanner.next());
             if (selection == 1)
                 printAllBooksWithAuthorAndPublishedYear();
-            else if (selection == 2)
+            else if (selection == 2) {
+                System.out.println("Which book do you want to check out?");
                 checkoutBook(scanner.next());
+            }
             else if (selection == 0) {
                 System.out.println(exitMessage);
                 break;

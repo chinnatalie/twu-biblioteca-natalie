@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import org.hamcrest.core.StringContains;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -112,5 +111,12 @@ public class BibliotecaUITest {
         bibliotecaUI.checkoutBook(bookName);
         bibliotecaUI.checkoutBook(bookName);
         assertThat(outContent.toString(), containsString("Sorry, that book is not available"));
+    }
+
+    @Test
+    public void shouldAskForBookToCheckout() {
+        givenUserInputs("1\n2\nPonti\n0");
+        bibliotecaUI.start();
+        assertThat(outContent.toString(), containsString("Which book do you want to check out?"));
     }
 }

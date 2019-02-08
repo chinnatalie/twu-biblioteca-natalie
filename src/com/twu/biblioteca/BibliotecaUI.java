@@ -61,7 +61,14 @@ class BibliotecaUI {
     }
 
     public void returnBook(String bookName) {
-        System.out.println("Thank you for returning the book");
+        switch (shelf.returnBook(bookName)) {
+            case SUCCESS:
+                System.out.println("Thank you for returning the book");
+                break;
+            case FAILURE:
+                System.out.println("That is not a valid book to return.");
+                break;
+        }
     }
 
     public void checkoutBook(String bookName) {

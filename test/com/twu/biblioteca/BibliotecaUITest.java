@@ -134,4 +134,10 @@ public class BibliotecaUITest {
         bibliotecaUI.returnBook(bookName);
         assertThat(outContent.toString(), containsString("Thank you for returning the book"));
     }
+
+    @Test
+    public void shouldSeeFailureMessageOnReturn() {
+        bibliotecaUI.returnBook(bookName);
+        assertThat(outContent.toString(), containsString("That is not a valid book to return."));
+    }
 }

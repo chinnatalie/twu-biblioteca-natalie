@@ -6,20 +6,20 @@ class BibliotecaUI {
 
     private BibliotecaShelf shelf;
 
-    private String welcomeMessage = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!";
-    private String mainMenu = "------- Main menu -------\n" +
+    private final String welcomeMessage = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!";
+    private final String mainMenu = "------- Main menu -------\n" +
             "1) List of books\n" +
             "2) Checkout book\n" +
             "3) Return book\n" +
             "0) Exit";
-    private String invalidOptionMessage = "Please select a valid option!";
-    private String exitMessage = "Exiting application";
-    private String checkoutBookQuestion = "Which book do you want to check out?";
-    private String returnBookQuestion = "Which book do you want to return?";
-    private String successReturnMessage = "Thank you for returning the book";
-    private String failureReturnMessage = "That is not a valid book to return.";
-    private String successCheckoutMessage = "Thank you! Enjoy the book";
-    private String failureCheckoutMessage = "Sorry, that book is not available";
+    private final String invalidOptionMessage = "Please select a valid option!";
+    private final String exitMessage = "Exiting application";
+    private final String checkoutBookQuestion = "Which book do you want to check out?";
+    private final String returnBookQuestion = "Which book do you want to return?";
+    private final String successReturnMessage = "Thank you for returning the book";
+    private final String failureReturnMessage = "That is not a valid book to return.";
+    private final String successCheckoutMessage = "Thank you! Enjoy the book";
+    private final String failureCheckoutMessage = "Sorry, that book is not available";
 
 
     BibliotecaUI() {

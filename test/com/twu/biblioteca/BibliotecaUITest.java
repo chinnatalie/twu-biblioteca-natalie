@@ -34,7 +34,8 @@ public class BibliotecaUITest {
             "Rainbirds | Clarissa Goenawan | 2018\n" +
             "The Descent of Monsters (The Tensorate Series) | JY Yang | 2018\n\n";
     private final String invalidOptionMessage = "Please select a valid option!\n";
-    private final String successfulCheckOutMessage = "Thank you! Enjoy the book\n";
+    private final String successCheckoutMessage = "Thank you! Enjoy the book\n";
+    private final String failureCheckoutMessage = "Sorry, that book is not available";
     private final String bookName = "The Descent of Monsters (The Tensorate Series) | JY Yang | 2018";
 
     @Before
@@ -113,14 +114,14 @@ public class BibliotecaUITest {
     @Test
     public void shouldSeeSuccessMessageOnCheckout() {
         bibliotecaUI.checkoutBook(bookName);
-        assertThat(outContent.toString(), containsString(successfulCheckOutMessage));
+        assertThat(outContent.toString(), containsString(successCheckOutMessage));
     }
 
     @Test
     public void shouldSeeFailureMessageOnCheckout() {
         bibliotecaUI.checkoutBook(bookName);
         bibliotecaUI.checkoutBook(bookName);
-        assertThat(outContent.toString(), containsString("Sorry, that book is not available"));
+        assertThat(outContent.toString(), containsString(failureCheckoutMessage));
     }
 
     @Test

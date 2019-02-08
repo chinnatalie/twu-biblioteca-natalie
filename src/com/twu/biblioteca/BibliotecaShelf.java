@@ -7,16 +7,16 @@ enum CheckoutStatus {SUCCESS, FAILURE};
 
 public class BibliotecaShelf {
 
-    private enum Status {AVAILABLE, CHECKEDOUT};
-    private TreeMap<String, Status> books;
+    private enum AvailabilityStatus {AVAILABLE, CHECKEDOUT};
+    private TreeMap<String, AvailabilityStatus> books;
 
     BibliotecaShelf() {
-        books = new TreeMap<String, Status>();
-        books.put("Rainbirds | Clarissa Goenawan | 2018", Status.AVAILABLE);
-        books.put("Bury What We Cannot Take | Kirsten Chen | 2018", Status.AVAILABLE);
-        books.put("An Ocean of Minutes | Thea Lim | 2018", Status.AVAILABLE);
-        books.put("The Descent of Monsters (The Tensorate Series) | JY Yang | 2018", Status.AVAILABLE);
-        books.put("Ponti | Sharlene Teo | 2018", Status.AVAILABLE);
+        books = new TreeMap<String, AvailabilityStatus>();
+        books.put("Rainbirds | Clarissa Goenawan | 2018", AvailabilityStatus.AVAILABLE);
+        books.put("Bury What We Cannot Take | Kirsten Chen | 2018", AvailabilityStatus.AVAILABLE);
+        books.put("An Ocean of Minutes | Thea Lim | 2018", AvailabilityStatus.AVAILABLE);
+        books.put("The Descent of Monsters (The Tensorate Series) | JY Yang | 2018", AvailabilityStatus.AVAILABLE);
+        books.put("Ponti | Sharlene Teo | 2018", AvailabilityStatus.AVAILABLE);
     }
 
     public String getAllBooks() {
@@ -30,8 +30,8 @@ public class BibliotecaShelf {
 
     public String getAllAvailableBooks() {
         String result = "";
-        for (Map.Entry<String, Status> entry: books.entrySet()) {
-            if (entry.getValue() == Status.AVAILABLE) {
+        for (Map.Entry<String, AvailabilityStatus> entry: books.entrySet()) {
+            if (entry.getValue() == AvailabilityStatus.AVAILABLE) {
                 result += entry.getKey();
                 result += "\n";
             }
@@ -39,9 +39,10 @@ public class BibliotecaShelf {
         return result;
     }
 
-    public CheckoutStatus checkoutBook(String book) {
-        if (books.get(book) == Status.AVAILABLE) {
-            books.replace(book, Status.CHECKEDOUT);
+    public CheckoutStatus checkoutBook(String bookName) {
+        AvailabilityStatus availability = books.get(bookName);
+        if (availability == AvailabilityStatus.AVAILABLE) {
+            books.replace(bookName, AvailabilityStatus.CHECKEDOUT);
             return CheckoutStatus.SUCCESS;
         } else {
             return CheckoutStatus.FAILURE;

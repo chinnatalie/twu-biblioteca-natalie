@@ -55,6 +55,7 @@ public class BibliotecaShelf {
     }
 
     public ReturnStatus returnBook(String bookName) {
+        books.replace(bookName, AvailabilityStatus.AVAILABLE);
         return ReturnStatus.SUCCESS;
     }
 }

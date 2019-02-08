@@ -65,4 +65,11 @@ public class BibliotecaShelfTest {
     public void shouldReturnSuccessStatusOnReturn() {
         assertThat(bibliotecaShelf.returnBook("Ponti | Sharlene Teo | 2018"), is(ReturnStatus.SUCCESS));
     }
+
+    @Test
+    public void shouldSeeBookAfterReturn() {
+        bibliotecaShelf.checkoutBook("Ponti | Sharlene Teo | 2018");
+        bibliotecaShelf.returnBook("Ponti | Sharlene Teo | 2018");
+        assertThat(bibliotecaShelf.getAllAvailableBooks(), is(listOfAllBooks));
+    }
 }

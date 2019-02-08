@@ -35,7 +35,7 @@ public class BibliotecaShelf {
         String result = "";
         Set<Map.Entry<String, AvailabilityStatus>> listOfAllBooksWithStatus = books.entrySet();
         for (Map.Entry<String, AvailabilityStatus> entry: listOfAllBooksWithStatus) {
-            if (entry.getValue() == AvailabilityStatus.AVAILABLE) {
+            if (isAvailable(entry.getValue())) {
                 result += entry.getKey();
                 result += "\n";
             }
@@ -46,7 +46,7 @@ public class BibliotecaShelf {
     public CheckoutStatus checkoutBook(String bookName) {
         try {
             AvailabilityStatus bookAvailability = books.get(bookName);
-            if (bookAvailability.equals(AvailabilityStatus.AVAILABLE)) {
+            if (isAvailable(bookAvailability)) {
                 books.replace(bookName, AvailabilityStatus.CHECKEDOUT);
                 return CheckoutStatus.SUCCESS;
             } else {
@@ -60,7 +60,7 @@ public class BibliotecaShelf {
     public ReturnStatus returnBook(String bookName) {
         try {
             AvailabilityStatus bookAvailability = books.get(bookName);
-            if (bookAvailability.equals(AvailabilityStatus.CHECKEDOUT)) {
+            if (isNotAvailable(bookAvailability)) {
                 books.replace(bookName, AvailabilityStatus.AVAILABLE);
                 return ReturnStatus.SUCCESS;
             } else {
@@ -69,5 +69,19 @@ public class BibliotecaShelf {
         } catch (Exception e) {
             return ReturnStatus.FAILURE;
         }
+    }
+
+    private boolean isAvailable(AvailabilityStatus status) {
+        if (status.equals(AvailabilityStatus.AVAILABLE))
+            return true;
+        else
+            return false;
+    }
+
+    private boolean isNotAvailable(AvailabilityStatus status) {
+        if (status.equals(AvailabilityStatus.CHECKEDOUT))
+            return true;
+        else
+            return false;
     }
 }

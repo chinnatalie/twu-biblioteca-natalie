@@ -9,7 +9,8 @@ class BibliotecaUI {
     private String welcomeMessage = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!";
     private String mainMenu = "------- Main menu -------\n" +
             "1) List of books\n" +
-            "2) Exit";
+            "2) Checkout book\n" +
+            "0) Exit";
     private String invalidMessage = "Please select a valid option!";
     private String exitMessage = "Exiting application";
 
@@ -41,7 +42,7 @@ class BibliotecaUI {
             Integer selection = Integer.parseInt(scanner.next());
             if (selection == 1)
                 printAllBooksWithAuthorAndPublishedYear();
-            else if (selection == 2) {
+            else if (selection == 0) {
                 System.out.println(exitMessage);
                 break;
             }

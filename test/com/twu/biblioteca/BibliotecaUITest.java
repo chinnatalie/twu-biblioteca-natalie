@@ -23,7 +23,8 @@ public class BibliotecaUITest {
     private final String welcomeMessage = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!\n";
     private final String mainMenu = "------- Main menu -------\n" +
             "1) List of books\n" +
-            "2) Exit\n";
+            "2) Checkout book\n" +
+            "0) Exit\n";
     private final String listOfAllBooksWithAuthorAndPublishedYear = "An Ocean of Minutes | Thea Lim | 2018\n" +
             "Bury What We Cannot Take | Kirsten Chen | 2018\n" +
             "Ponti | Sharlene Teo | 2018\n" +
@@ -66,36 +67,41 @@ public class BibliotecaUITest {
 
     @Test
     public void shouldSeeWelcomeMessageThenMainMenu() {
-        givenUserInputs("1\n2");
+        givenUserInputs("1\n0");
         bibliotecaUI.start();
         assertThat(outContent.toString(),startsWith(welcomeMessage + mainMenu));
     }
 
     @Test
     public void shouldSeeAllBooksIfSelectedFromMainMenu() {
-        givenUserInputs("1\n2");
+        givenUserInputs("1\n0");
         bibliotecaUI.selectMenuOption();
         assertThat(outContent.toString(),startsWith(listOfAllBooksWithAuthorAndPublishedYear));
     }
 
     @Test
     public void shouldSeeInvalidMessageWhenSelectedOptionIsInvalid() {
-        givenUserInputs("120\n2");
+        givenUserInputs("120\n0");
         bibliotecaUI.selectMenuOption();
         assertThat(outContent.toString(),startsWith(invalidMessage));
     }
 
     @Test
     public void shouldSeeAllBooksIfSelectedAfterMainMenu() {
-        givenUserInputs("1\n2");
+        givenUserInputs("1\n0");
         bibliotecaUI.start();
         assertThat(outContent.toString(), startsWith(welcomeMessage + mainMenu + listOfAllBooksWithAuthorAndPublishedYear));
     }
 
     @Test
     public void shouldQuitApplicationIfSelected() {
-        givenUserInputs("1\n1\n1\n2");
+        givenUserInputs("1\n1\n1\n0");
         bibliotecaUI.start();
         assertThat(outContent.toString(),endsWith("Exiting application\n"));
+    }
+
+    @Test
+    public void shouldAskUserWhichBookToCheckout() {
+        givenUserInputs("1\n");
     }
 }

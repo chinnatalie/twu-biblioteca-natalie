@@ -75,7 +75,12 @@ public class BibliotecaShelfTest {
     }
 
     @Test
-    public void shouldReturnFailureStatusOnReturn() {
+    public void shouldReturnFailureStatusOnReturnIfNotCheckedOut() {
         assertThat(bibliotecaShelf.returnBook("Ponti | Sharlene Teo | 2018"), is(ReturnStatus.FAILURE));
+    }
+
+    @Test
+    public void shouldReturnFailureStatusOnReturnIfNotExistent() {
+        assertThat(bibliotecaShelf.returnBook("The Great Gatsby"), is(ReturnStatus.FAILURE));
     }
 }

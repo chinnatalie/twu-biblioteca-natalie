@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import com.sun.tools.javac.comp.Check;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -79,24 +78,24 @@ public class BibliotecaShelfTest {
     @Test
     public void shouldReturnSuccessStatusOnReturn() {
         bibliotecaShelf.checkoutResource("Ponti");
-        assertThat(bibliotecaShelf.returnBook("Ponti"), is(ReturnStatus.SUCCESS));
+        assertThat(bibliotecaShelf.returnResource("Ponti"), is(ReturnStatus.SUCCESS));
     }
 
     @Test
     public void shouldSeeBookAfterReturn() {
         bibliotecaShelf.checkoutResource("Ponti");
-        bibliotecaShelf.returnBook("Ponti");
+        bibliotecaShelf.returnResource("Ponti");
         assertThat(bibliotecaShelf.getAllAvailableResources(), is(listOfAllBooks));
     }
 
     @Test
     public void shouldReturnFailureStatusOnReturnIfNotCheckedOut() {
-        assertThat(bibliotecaShelf.returnBook("Ponti"), is(ReturnStatus.FAILURE));
+        assertThat(bibliotecaShelf.returnResource("Ponti"), is(ReturnStatus.FAILURE));
     }
 
     @Test
     public void shouldReturnFailureStatusOnReturnIfNotExistent() {
-        assertThat(bibliotecaShelf.returnBook("The Great Gatsby"), is(ReturnStatus.FAILURE));
+        assertThat(bibliotecaShelf.returnResource("The Great Gatsby"), is(ReturnStatus.FAILURE));
     }
 
     @Test

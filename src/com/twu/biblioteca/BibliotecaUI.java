@@ -87,7 +87,7 @@ class BibliotecaUI {
     }
 
     void returnBook(String bookName) {
-        ReturnStatus returnStatus = bookShelf.returnBook(bookName);
+        ReturnStatus returnStatus = bookShelf.returnResource(bookName);
         switch (returnStatus) {
             case SUCCESS:
                 print(successReturnMessage);

@@ -57,11 +57,11 @@ public class BibliotecaShelf {
         }
     }
 
-    ReturnStatus returnBook(String bookName) {
+    ReturnStatus returnResource(String bookResource) {
         try {
-            for (BibliotecaResource book: resources) {
-                if (book.getName() == bookName && book.isCheckedOut()) {
-                    book.isReturned();
+            for (BibliotecaResource resource: resources) {
+                if (resource.getName() == bookResource && resource.isCheckedOut()) {
+                    resource.isReturned();
                     return ReturnStatus.SUCCESS;
                 }
             }

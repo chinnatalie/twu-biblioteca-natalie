@@ -51,6 +51,7 @@ public class BibliotecaUITest {
             "881 | 2007 | Royston Tan | 6.5\n" +
             "Chicken Rice War | 2000 | Chee Kong Cheah | 6.3\n";
     private final String checkOutMovieQuestion = "Which movie do you want to check out?";
+    private final String successMovieCheckOutMessage = "Thank you! Enjoy the movie";
 
     @Before
     public void setUpStreams() {
@@ -184,5 +185,11 @@ public class BibliotecaUITest {
         givenUserInputs(Arrays.asList("5","881","0"));
         bibliotecaUI.start();
         assertThat(outContent.toString(), containsString(checkOutMovieQuestion));
+    }
+
+    @Test
+    public void shouldSeeSuccessMessageOnMovieCheckOut() {
+        bibliotecaUI.checkOutMovie("881");
+        assertThat(outContent.toString(), containsString(successMovieCheckOutMessage));
     }
 }

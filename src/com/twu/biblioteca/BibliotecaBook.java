@@ -28,4 +28,9 @@ public class BibliotecaBook {
     public AvailabilityStatus getAvailability() {
         return this.availability;
     }
+
+    public void checkOut() {
+        this.availability = AvailabilityStatus.CHECKEDOUT;
+    }
+
 }

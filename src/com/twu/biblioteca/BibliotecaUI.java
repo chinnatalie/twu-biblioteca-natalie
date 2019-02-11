@@ -47,7 +47,7 @@ class BibliotecaUI {
     void selectMenuOption() {
         Scanner scanner = new Scanner(System.in);
         while(true) {
-            Integer selection = Integer.parseInt(scanner.next());
+            Integer selection = getOptionSelected(scanner.next());
             if (selection == 1)
                 printAllBooksWithAuthorAndPublishedYear();
             else if (selection == 2) {
@@ -89,6 +89,16 @@ class BibliotecaUI {
                 print(failureCheckoutMessage);
                 break;
         }
+    }
+
+    private int getOptionSelected(String userInput) {
+        Integer selection;
+        try {
+            selection = Integer.parseInt(userInput);
+        } catch (Exception e) {
+            selection = -1;
+        }
+        return selection;
     }
 
     private void print(String message) {

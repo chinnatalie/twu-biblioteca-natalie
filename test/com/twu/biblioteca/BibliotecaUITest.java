@@ -154,4 +154,11 @@ public class BibliotecaUITest {
         bibliotecaUI.returnBook(bookName);
         assertThat(outContent.toString(), containsString(failureReturnMessage));
     }
+
+    @Test
+    public void shouldSeeInvalidMessageWhenSelectedOptionIsNonInteger() {
+        givenUserInputs(Arrays.asList("helloworld", "0"));
+        bibliotecaUI.start();
+        assertThat(outContent.toString(), containsString(invalidOptionMessage));
+    }
 }

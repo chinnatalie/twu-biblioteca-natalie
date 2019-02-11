@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -23,9 +24,8 @@ public class BibliotecaShelfTest {
     @Before
     public void initializeBibliotecaShelf() {
         bibliotecaShelf = new BibliotecaShelf();
-        ArrayList<BibliotecaResource> movieList = new ArrayList<>();
-        movieList.add(new BibliotecaMovie("Ilo Ilo", "2013", "Anthony Chen", "7.3"));
-        bibliotecaMovieShelf = new BibliotecaShelf(movieList);
+        bibliotecaMovieShelf = new BibliotecaShelf(Arrays.asList(
+                new BibliotecaMovie("Ilo Ilo", "2013", "Anthony Chen", "7.3")));
     }
 
     @Test

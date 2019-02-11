@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
+import java.util.List;
 
 enum CheckoutStatus {SUCCESS, FAILURE}
 enum ReturnStatus {SUCCESS, FAILURE}
@@ -20,6 +21,10 @@ public class BibliotecaShelf {
 
     BibliotecaShelf(ArrayList<BibliotecaResource> resources) {
         books = resources;
+    }
+
+    BibliotecaShelf(List<BibliotecaResource> resources) {
+        books = new ArrayList<>(resources);
     }
 
     public String getAllResources() {

@@ -42,7 +42,7 @@ public class BibliotecaShelfTest {
 
     @Test
     public void shouldCheckoutBook() {
-        bibliotecaShelf.checkoutBook("Rainbirds");
+        bibliotecaShelf.checkoutResource("Rainbirds");
         assertThat(bibliotecaShelf.getAllAvailableResources(), is("An Ocean of Minutes | Thea Lim | 2018\n" +
                 "Bury What We Cannot Take | Kirsten Chen | 2018\n" +
                 "Ponti | Sharlene Teo | 2018\n" +
@@ -51,12 +51,12 @@ public class BibliotecaShelfTest {
 
     @Test
     public void shouldReturnSuccessStatusOnCheckout() {
-        assertThat(bibliotecaShelf.checkoutBook("Rainbirds"), is(CheckoutStatus.SUCCESS));
+        assertThat(bibliotecaShelf.checkoutResource("Rainbirds"), is(CheckoutStatus.SUCCESS));
     }
 
     @Test
     public void shouldNotSeeBookAfterCheckout() {
-        bibliotecaShelf.checkoutBook("Ponti");
+        bibliotecaShelf.checkoutResource("Ponti");
         String updatedList = "An Ocean of Minutes | Thea Lim | 2018\n" +
                 "Bury What We Cannot Take | Kirsten Chen | 2018\n" +
                 "Rainbirds | Clarissa Goenawan | 2018\n" +
@@ -66,24 +66,24 @@ public class BibliotecaShelfTest {
 
     @Test
     public void shouldReturnFailureStatusOnCheckoutIfUnavailable() {
-        bibliotecaShelf.checkoutBook("Ponti");
-        assertThat(bibliotecaShelf.checkoutBook("Ponti | Sharlene Teo | 2018"), is(CheckoutStatus.FAILURE));
+        bibliotecaShelf.checkoutResource("Ponti");
+        assertThat(bibliotecaShelf.checkoutResource("Ponti | Sharlene Teo | 2018"), is(CheckoutStatus.FAILURE));
     }
 
     @Test
     public void shouldReturnFailureStatusOnCheckoutIfNonExistent() {
-        assertThat(bibliotecaShelf.checkoutBook("The Great Gatsby"), is(CheckoutStatus.FAILURE));
+        assertThat(bibliotecaShelf.checkoutResource("The Great Gatsby"), is(CheckoutStatus.FAILURE));
     }
 
     @Test
     public void shouldReturnSuccessStatusOnReturn() {
-        bibliotecaShelf.checkoutBook("Ponti");
+        bibliotecaShelf.checkoutResource("Ponti");
         assertThat(bibliotecaShelf.returnBook("Ponti"), is(ReturnStatus.SUCCESS));
     }
 
     @Test
     public void shouldSeeBookAfterReturn() {
-        bibliotecaShelf.checkoutBook("Ponti");
+        bibliotecaShelf.checkoutResource("Ponti");
         bibliotecaShelf.returnBook("Ponti");
         assertThat(bibliotecaShelf.getAllAvailableResources(), is(listOfAllBooks));
     }
@@ -101,5 +101,10 @@ public class BibliotecaShelfTest {
     @Test
     public void shouldReturnAllMovies() {
         assertThat(bibliotecaMovieShelf.getAllResources(), is(listOfAllMovies));
+    }
+
+    @Test
+    public void shouldReturnSuccessStatusOnMovieCheckOut() {
+        assertThat(bibliotecaMovieShelf.checkoutResource("881"), is(CheckoutStatus.SUCCESS));
     }
 }

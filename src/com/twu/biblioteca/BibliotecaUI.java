@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -99,7 +98,7 @@ class BibliotecaUI {
     }
 
     void checkoutBook(String bookName) {
-        CheckoutStatus checkoutStatus = bookShelf.checkoutBook(bookName);
+        CheckoutStatus checkoutStatus = bookShelf.checkoutResource(bookName);
         switch (checkoutStatus) {
             case SUCCESS:
                 print(successCheckoutMessage);

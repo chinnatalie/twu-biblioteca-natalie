@@ -8,24 +8,24 @@ enum ReturnStatus {SUCCESS, FAILURE}
 
 public class BibliotecaShelf {
 
-    private ArrayList<BibliotecaResource> books;
+    private ArrayList<BibliotecaResource> resources;
 
     BibliotecaShelf() {
-        books = new ArrayList<>();
-        books.add(new BibliotecaBook("An Ocean of Minutes", "Thea Lim", "2018"));
-        books.add(new BibliotecaBook("Bury What We Cannot Take", "Kirsten Chen", "2018"));
-        books.add(new BibliotecaBook( "Ponti", "Sharlene Teo", "2018"));
-        books.add(new BibliotecaBook("Rainbirds", "Clarissa Goenawan","2018"));
-        books.add(new BibliotecaBook("The Descent of Monsters (The Tensorate Series)", "JY Yang", "2018"));
+        resources = new ArrayList<>();
+        resources.add(new BibliotecaBook("An Ocean of Minutes", "Thea Lim", "2018"));
+        resources.add(new BibliotecaBook("Bury What We Cannot Take", "Kirsten Chen", "2018"));
+        resources.add(new BibliotecaBook( "Ponti", "Sharlene Teo", "2018"));
+        resources.add(new BibliotecaBook("Rainbirds", "Clarissa Goenawan","2018"));
+        resources.add(new BibliotecaBook("The Descent of Monsters (The Tensorate Series)", "JY Yang", "2018"));
     }
 
     BibliotecaShelf(List<BibliotecaResource> resources) {
-        books = new ArrayList<>(resources);
+        this.resources = new ArrayList<>(resources);
     }
 
     public String getAllResources() {
         String result = "";
-        for (BibliotecaResource book: books) {
+        for (BibliotecaResource book: resources) {
             result += book.getDetails();
             result += "\n";
         }
@@ -34,7 +34,7 @@ public class BibliotecaShelf {
 
     String getAllAvailableResources() {
         String result = "";
-        for (BibliotecaResource book: books) {
+        for (BibliotecaResource book: resources) {
             if (book.isAvailable()){
                 result += book.getDetails();
                 result += "\n";
@@ -43,11 +43,11 @@ public class BibliotecaShelf {
         return result;
     }
 
-    CheckoutStatus checkoutBook(String bookName) {
+    CheckoutStatus checkoutResource(String resourceName) {
         try {
-            for (BibliotecaResource book: books) {
-                if (book.getName() == bookName && book.isAvailable()) {
-                    book.checkOut();
+            for (BibliotecaResource resource: resources) {
+                if (resource.getName() == resourceName && resource.isAvailable()) {
+                    resource.checkOut();
                     return CheckoutStatus.SUCCESS;
                 }
             }
@@ -59,7 +59,7 @@ public class BibliotecaShelf {
 
     ReturnStatus returnBook(String bookName) {
         try {
-            for (BibliotecaResource book: books) {
+            for (BibliotecaResource book: resources) {
                 if (book.getName() == bookName && book.isCheckedOut()) {
                     book.isReturned();
                     return ReturnStatus.SUCCESS;

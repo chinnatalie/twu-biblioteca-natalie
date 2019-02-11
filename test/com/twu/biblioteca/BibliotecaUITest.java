@@ -27,7 +27,9 @@ public class BibliotecaUITest {
             "1) List of books\n" +
             "2) Checkout book\n" +
             "3) Return book\n" +
+            "4) List of movies\n" +
             "0) Exit\n";
+
     private final String listOfAllBooksWithAuthorAndPublishedYear = "An Ocean of Minutes | Thea Lim | 2018\n" +
             "Bury What We Cannot Take | Kirsten Chen | 2018\n" +
             "Ponti | Sharlene Teo | 2018\n" +
@@ -41,6 +43,9 @@ public class BibliotecaUITest {
     private final String successReturnMessage = "Thank you for returning the book";
     private final String failureReturnMessage = "That is not a valid book to return.";
     private final String bookName = "The Descent of Monsters (The Tensorate Series)";
+
+    private final String listOfAllMovies = "Ilo Ilo | 2013 | Anthony Chen | 7.3\n" +
+            "12 Storeys | 1997 | Eric Khoo | 6.8\n\n";
 
     @Before
     public void setUpStreams() {
@@ -160,5 +165,12 @@ public class BibliotecaUITest {
         givenUserInputs(Arrays.asList("helloworld", "0"));
         bibliotecaUI.start();
         assertThat(outContent.toString(), containsString(invalidOptionMessage));
+    }
+
+    @Test
+    public void shouldSeeAllMoviesIfSelectedFromMaimMenu() {
+        givenUserInputs(Arrays.asList("4", "0"));
+        bibliotecaUI.start();
+        assertThat(outContent.toString(), containsString(listOfAllMovies));
     }
 }

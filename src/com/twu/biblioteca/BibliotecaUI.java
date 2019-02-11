@@ -1,16 +1,19 @@
 package com.twu.biblioteca;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 class BibliotecaUI {
 
-    private BibliotecaShelf shelf;
+    private BibliotecaShelf bookShelf;
+    private BibliotecaShelf movieShelf;
 
     private final String welcomeMessage = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!";
     private final String mainMenu = "------- Main menu -------\n" +
             "1) List of books\n" +
             "2) Checkout book\n" +
             "3) Return book\n" +
+            "4) List of movies\n" +
             "0) Exit";
     private final String invalidOptionMessage = "Please select a valid option!";
     private final String exitMessage = "Exiting application";
@@ -23,7 +26,11 @@ class BibliotecaUI {
 
 
     BibliotecaUI() {
-        shelf = new BibliotecaShelf();
+        bookShelf = new BibliotecaShelf();
+        ArrayList<BibliotecaResource> movieList = new ArrayList<>();
+        movieList.add(new BibliotecaMovie("Ilo Ilo", "2013", "Anthony Chen", "7.3"));
+        movieList.add(new BibliotecaMovie("12 Storeys", "1997", "Eric Khoo", "6.8"));
+        movieShelf = new BibliotecaShelf(movieList);
     }
 
     void start() {
@@ -37,7 +44,7 @@ class BibliotecaUI {
     }
 
     void printAllBooksWithAuthorAndPublishedYear() {
-        print(shelf.getAllResources());
+        print(bookShelf.getAllResources());
     }
 
     void printMainMenu() {
@@ -58,6 +65,9 @@ class BibliotecaUI {
                 print(returnBookQuestion);
                 returnBook(scanner.next());
             }
+            else if (selection == 4) {
+                print(movieShelf.getAllAvailableBooks());
+            }
             else if (selection == 0) {
                 print(exitMessage);
                 break;
@@ -68,7 +78,7 @@ class BibliotecaUI {
     }
 
     void returnBook(String bookName) {
-        ReturnStatus returnStatus = shelf.returnBook(bookName);
+        ReturnStatus returnStatus = bookShelf.returnBook(bookName);
         switch (returnStatus) {
             case SUCCESS:
                 print(successReturnMessage);
@@ -80,7 +90,7 @@ class BibliotecaUI {
     }
 
     void checkoutBook(String bookName) {
-        CheckoutStatus checkoutStatus = shelf.checkoutBook(bookName);
+        CheckoutStatus checkoutStatus = bookShelf.checkoutBook(bookName);
         switch (checkoutStatus) {
             case SUCCESS:
                 print(successCheckoutMessage);

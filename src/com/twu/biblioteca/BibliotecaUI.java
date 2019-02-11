@@ -30,11 +30,14 @@ class BibliotecaUI {
         bookShelf = new BibliotecaShelf();
         movieShelf = new BibliotecaShelf(Arrays.asList(
                 new BibliotecaMovie("Ilo Ilo", "2013", "Anthony Chen", "7.3"),
-                new BibliotecaMovie("12 Storeys", "1997", "Eric Khoo", "6.8")));
+                new BibliotecaMovie("12 Storeys", "1997", "Eric Khoo", "6.8"),
+                new BibliotecaMovie("I Not Stupid", "2002", "Jack Neo", "7.3"),
+                new BibliotecaMovie("881", "2007", "Royston Tan", "6.5"),
+                new BibliotecaMovie("Chicken Rice War", "2000", "Chee Kong Cheah", "6.3")));
     }
 
     void start() {
-        printWelcomeMessage();
+        print(welcomeMessage);
         printMainMenu();
         selectMenuOption();
     }

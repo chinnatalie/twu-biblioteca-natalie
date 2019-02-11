@@ -45,7 +45,10 @@ public class BibliotecaUITest {
     private final String bookName = "The Descent of Monsters (The Tensorate Series)";
 
     private final String listOfAllMovies = "Ilo Ilo | 2013 | Anthony Chen | 7.3\n" +
-            "12 Storeys | 1997 | Eric Khoo | 6.8\n\n";
+            "12 Storeys | 1997 | Eric Khoo | 6.8\n" +
+            "I Not Stupid | 2002 | Jack Neo | 7.3\n" +
+            "881 | 2007 | Royston Tan | 6.5\n" +
+            "Chicken Rice War | 2000 | Chee Kong Cheah | 6.3\n";
 
     @Before
     public void setUpStreams() {

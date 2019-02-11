@@ -41,4 +41,11 @@ public class BibliotecaBookTest {
         book.checkOut();
         assertThat(book.getAvailability(), is(AvailabilityStatus.CHECKEDOUT));
     }
+
+    @Test
+    public void shouldReturnAvailableIfReturned() {
+        book.checkOut();
+        book.isReturned();
+        assertThat(book.getAvailability(), is(AvailabilityStatus.AVAILABLE));
+    }
 }

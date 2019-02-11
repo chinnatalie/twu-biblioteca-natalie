@@ -33,4 +33,7 @@ public class BibliotecaBook {
         this.availability = AvailabilityStatus.CHECKEDOUT;
     }
 
+    public void isReturned() {
+        this.availability = AvailabilityStatus.AVAILABLE;
+    }
 }

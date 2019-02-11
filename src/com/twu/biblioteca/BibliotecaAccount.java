@@ -12,6 +12,7 @@ public class BibliotecaAccount {
     public boolean authenticate(String password123) {
         if (password123 == this.password)
             return true;
-        return true;
+        else
+            return false;
     }
 }

@@ -19,4 +19,9 @@ public class BibliotecaAccountTest {
     public void shouldReturnTrueIfCorrectPassword() {
         assertThat(account.authenticate("password123"), is(true));
     }
+
+    @Test
+    public void shouldReturnFalseIfWrongPassword() {
+        assertThat(account.authenticate("pazzwork321"), is(false));
+    }
 }

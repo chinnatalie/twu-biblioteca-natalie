@@ -30,7 +30,7 @@ public class BibliotecaShelfTest {
 
     @Test
     public void shouldReturnAllBooks() {
-        assertThat(bibliotecaShelf.getAllBooks(), is(listOfAllBooks));
+        assertThat(bibliotecaShelf.getAllResources(), is(listOfAllBooks));
     }
 
     @Test

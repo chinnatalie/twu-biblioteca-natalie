@@ -37,7 +37,7 @@ class BibliotecaUI {
     }
 
     void printAllBooksWithAuthorAndPublishedYear() {
-        print(shelf.getAllBooks());
+        print(shelf.getAllResources());
     }
 
     void printMainMenu() {

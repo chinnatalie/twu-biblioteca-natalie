@@ -22,7 +22,7 @@ public class BibliotecaShelf {
         books = resources;
     }
 
-    String getAllBooks() {
+    public String getAllResources() {
         String result = "";
         for (BibliotecaResource book: books) {
             result += book.getDetails();
@@ -68,14 +68,5 @@ public class BibliotecaShelf {
         } catch (Exception e) {
             return ReturnStatus.FAILURE;
         }
-    }
-
-    public String getAllResources() {
-        String result = "";
-        for (BibliotecaResource book: books) {
-            result += book.getDetails();
-            result += "\n";
-        }
-        return result;
     }
 }

@@ -3,22 +3,29 @@ package com.twu.biblioteca;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 public class BibliotecaShelfTest {
 
     private BibliotecaShelf bibliotecaShelf;
+    private BibliotecaShelf bibliotecaMovieShelf;
 
     private final String listOfAllBooks = "An Ocean of Minutes | Thea Lim | 2018\n" +
             "Bury What We Cannot Take | Kirsten Chen | 2018\n" +
             "Ponti | Sharlene Teo | 2018\n" +
             "Rainbirds | Clarissa Goenawan | 2018\n" +
             "The Descent of Monsters (The Tensorate Series) | JY Yang | 2018\n";
+    private final String listOfAllMovies = "Ilo Ilo | 2013 | Anthony Chen | 7.3\n";
 
     @Before
     public void initializeBibliotecaShelf() {
         bibliotecaShelf = new BibliotecaShelf();
+        ArrayList<BibliotecaResource> movieList = new ArrayList<>();
+        movieList.add(new BibliotecaMovie("Ilo Ilo", "2013", "Anthony Chen", "7.3"));
+        bibliotecaMovieShelf = new BibliotecaShelf(movieList);
     }
 
     @Test
@@ -82,5 +89,10 @@ public class BibliotecaShelfTest {
     @Test
     public void shouldReturnFailureStatusOnReturnIfNotExistent() {
         assertThat(bibliotecaShelf.returnBook("The Great Gatsby"), is(ReturnStatus.FAILURE));
+    }
+
+    @Test
+    public void shouldReturnAllMovies() {
+        assertThat(bibliotecaMovieShelf.getAllResources(), is(listOfAllMovies));
     }
 }

@@ -7,7 +7,7 @@ enum ReturnStatus {SUCCESS, FAILURE}
 
 public class BibliotecaShelf {
 
-    private ArrayList<BibliotecaBook> books;
+    private ArrayList<BibliotecaResource> books;
 
     BibliotecaShelf() {
         books = new ArrayList<>();
@@ -18,9 +18,13 @@ public class BibliotecaShelf {
         books.add(new BibliotecaBook("The Descent of Monsters (The Tensorate Series)", "JY Yang", "2018"));
     }
 
+    BibliotecaShelf(ArrayList<BibliotecaResource> resources) {
+        books = resources;
+    }
+
     String getAllBooks() {
         String result = "";
-        for (BibliotecaBook book: books) {
+        for (BibliotecaResource book: books) {
             result += book.getDetails();
             result += "\n";
         }
@@ -29,7 +33,7 @@ public class BibliotecaShelf {
 
     String getAllAvailableBooks() {
         String result = "";
-        for (BibliotecaBook book: books) {
+        for (BibliotecaResource book: books) {
             if (book.isAvailable()){
                 result += book.getDetails();
                 result += "\n";
@@ -40,7 +44,7 @@ public class BibliotecaShelf {
 
     CheckoutStatus checkoutBook(String bookName) {
         try {
-            for (BibliotecaBook book: books) {
+            for (BibliotecaResource book: books) {
                 if (book.getName() == bookName && book.isAvailable()) {
                     book.checkOut();
                     return CheckoutStatus.SUCCESS;
@@ -54,7 +58,7 @@ public class BibliotecaShelf {
 
     ReturnStatus returnBook(String bookName) {
         try {
-            for (BibliotecaBook book: books) {
+            for (BibliotecaResource book: books) {
                 if (book.getName() == bookName && book.isCheckedOut()) {
                     book.isReturned();
                     return ReturnStatus.SUCCESS;
@@ -64,5 +68,14 @@ public class BibliotecaShelf {
         } catch (Exception e) {
             return ReturnStatus.FAILURE;
         }
+    }
+
+    public String getAllResources() {
+        String result = "";
+        for (BibliotecaResource book: books) {
+            result += book.getDetails();
+            result += "\n";
+        }
+        return result;
     }
 }

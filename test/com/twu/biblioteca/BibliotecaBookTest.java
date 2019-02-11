@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.StringContains.containsString;
 
 public class BibliotecaBookTest {
     private BibliotecaBook book;
@@ -20,5 +21,13 @@ public class BibliotecaBookTest {
     @Test
     public void shouldReturnName() {
         assertThat(book.getName(), is(name));
+    }
+
+    @Test
+    public void shouldReturnDetails() {
+        String details = book.getDetails();
+        assertThat(details, containsString(name));
+        assertThat(details, containsString(author));
+        assertThat(details, containsString(publishedYear));
     }
 }

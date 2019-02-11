@@ -18,4 +18,9 @@ public class BibliotecaBook {
     public String getName() {
         return this.name;
     }
+
+    public String getDetails() {
+        String details = name + " | " + author + " | " + publishedYear;
+        return details;
+    }
 }

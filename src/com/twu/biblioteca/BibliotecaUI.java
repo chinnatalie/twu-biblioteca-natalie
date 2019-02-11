@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 class BibliotecaUI {
@@ -27,10 +28,9 @@ class BibliotecaUI {
 
     BibliotecaUI() {
         bookShelf = new BibliotecaShelf();
-        ArrayList<BibliotecaResource> movieList = new ArrayList<>();
-        movieList.add(new BibliotecaMovie("Ilo Ilo", "2013", "Anthony Chen", "7.3"));
-        movieList.add(new BibliotecaMovie("12 Storeys", "1997", "Eric Khoo", "6.8"));
-        movieShelf = new BibliotecaShelf(movieList);
+        movieShelf = new BibliotecaShelf(Arrays.asList(
+                new BibliotecaMovie("Ilo Ilo", "2013", "Anthony Chen", "7.3"),
+                new BibliotecaMovie("12 Storeys", "1997", "Eric Khoo", "6.8")));
     }
 
     void start() {

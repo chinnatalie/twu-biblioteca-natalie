@@ -19,10 +19,6 @@ public class BibliotecaShelf {
         books.add(new BibliotecaBook("The Descent of Monsters (The Tensorate Series)", "JY Yang", "2018"));
     }
 
-    BibliotecaShelf(ArrayList<BibliotecaResource> resources) {
-        books = resources;
-    }
-
     BibliotecaShelf(List<BibliotecaResource> resources) {
         books = new ArrayList<>(resources);
     }

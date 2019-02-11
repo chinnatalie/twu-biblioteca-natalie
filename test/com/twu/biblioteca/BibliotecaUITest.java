@@ -40,7 +40,7 @@ public class BibliotecaUITest {
     private final String returnBookQuestion = "Which book do you want to return?";
     private final String successReturnMessage = "Thank you for returning the book";
     private final String failureReturnMessage = "That is not a valid book to return.";
-    private final String bookName = "The Descent of Monsters (The Tensorate Series) | JY Yang | 2018";
+    private final String bookName = "The Descent of Monsters (The Tensorate Series)";
 
     @Before
     public void setUpStreams() {

@@ -28,7 +28,7 @@ public class BibliotecaShelfTest {
 
     @Test
     public void shouldCheckoutBook() {
-        bibliotecaShelf.checkoutBook("Rainbirds | Clarissa Goenawan | 2018");
+        bibliotecaShelf.checkoutBook("Rainbirds");
         assertThat(bibliotecaShelf.getAllAvailableBooks(), is("An Ocean of Minutes | Thea Lim | 2018\n" +
                 "Bury What We Cannot Take | Kirsten Chen | 2018\n" +
                 "Ponti | Sharlene Teo | 2018\n" +
@@ -37,12 +37,12 @@ public class BibliotecaShelfTest {
 
     @Test
     public void shouldReturnSuccessStatusOnCheckout() {
-        assertThat(bibliotecaShelf.checkoutBook("Rainbirds | Clarissa Goenawan | 2018"), is(CheckoutStatus.SUCCESS));
+        assertThat(bibliotecaShelf.checkoutBook("Rainbirds"), is(CheckoutStatus.SUCCESS));
     }
 
     @Test
     public void shouldNotSeeBookAfterCheckout() {
-        bibliotecaShelf.checkoutBook("Ponti | Sharlene Teo | 2018");
+        bibliotecaShelf.checkoutBook("Ponti");
         String updatedList = "An Ocean of Minutes | Thea Lim | 2018\n" +
                 "Bury What We Cannot Take | Kirsten Chen | 2018\n" +
                 "Rainbirds | Clarissa Goenawan | 2018\n" +
@@ -52,7 +52,7 @@ public class BibliotecaShelfTest {
 
     @Test
     public void shouldReturnFailureStatusOnCheckoutIfUnavailable() {
-        bibliotecaShelf.checkoutBook("Ponti | Sharlene Teo | 2018");
+        bibliotecaShelf.checkoutBook("Ponti");
         assertThat(bibliotecaShelf.checkoutBook("Ponti | Sharlene Teo | 2018"), is(CheckoutStatus.FAILURE));
     }
 
@@ -63,20 +63,20 @@ public class BibliotecaShelfTest {
 
     @Test
     public void shouldReturnSuccessStatusOnReturn() {
-        bibliotecaShelf.checkoutBook("Ponti | Sharlene Teo | 2018");
-        assertThat(bibliotecaShelf.returnBook("Ponti | Sharlene Teo | 2018"), is(ReturnStatus.SUCCESS));
+        bibliotecaShelf.checkoutBook("Ponti");
+        assertThat(bibliotecaShelf.returnBook("Ponti"), is(ReturnStatus.SUCCESS));
     }
 
     @Test
     public void shouldSeeBookAfterReturn() {
-        bibliotecaShelf.checkoutBook("Ponti | Sharlene Teo | 2018");
-        bibliotecaShelf.returnBook("Ponti | Sharlene Teo | 2018");
+        bibliotecaShelf.checkoutBook("Ponti");
+        bibliotecaShelf.returnBook("Ponti");
         assertThat(bibliotecaShelf.getAllAvailableBooks(), is(listOfAllBooks));
     }
 
     @Test
     public void shouldReturnFailureStatusOnReturnIfNotCheckedOut() {
-        assertThat(bibliotecaShelf.returnBook("Ponti | Sharlene Teo | 2018"), is(ReturnStatus.FAILURE));
+        assertThat(bibliotecaShelf.returnBook("Ponti"), is(ReturnStatus.FAILURE));
     }
 
     @Test

@@ -1,8 +1,6 @@
 package com.twu.biblioteca;
 
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.ArrayList;
 
 enum CheckoutStatus {SUCCESS, FAILURE}
 enum ReturnStatus {SUCCESS, FAILURE}
@@ -10,22 +8,21 @@ enum ReturnStatus {SUCCESS, FAILURE}
 public class BibliotecaShelf {
 
     private enum AvailabilityStatus {AVAILABLE, CHECKEDOUT}
-    private TreeMap<String, AvailabilityStatus> books;
+    private ArrayList<BibliotecaBook> books;
 
     BibliotecaShelf() {
-        books = new TreeMap<String, AvailabilityStatus>();
-        books.put("Rainbirds | Clarissa Goenawan | 2018", AvailabilityStatus.AVAILABLE);
-        books.put("Bury What We Cannot Take | Kirsten Chen | 2018", AvailabilityStatus.AVAILABLE);
-        books.put("An Ocean of Minutes | Thea Lim | 2018", AvailabilityStatus.AVAILABLE);
-        books.put("The Descent of Monsters (The Tensorate Series) | JY Yang | 2018", AvailabilityStatus.AVAILABLE);
-        books.put("Ponti | Sharlene Teo | 2018", AvailabilityStatus.AVAILABLE);
+        books = new ArrayList<>();
+        books.add(new BibliotecaBook("An Ocean of Minutes", "Thea Lim", "2018"));
+        books.add(new BibliotecaBook("Bury What We Cannot Take", "Kirsten Chen", "2018"));
+        books.add(new BibliotecaBook( "Ponti", "Sharlene Teo", "2018"));
+        books.add(new BibliotecaBook("Rainbirds", "Clarissa Goenawan","2018"));
+        books.add(new BibliotecaBook("The Descent of Monsters (The Tensorate Series)", "JY Yang", "2018"));
     }
 
     String getAllBooks() {
         String result = "";
-        Set<String> listOfAllBooks = books.keySet();
-        for (String book: listOfAllBooks) {
-            result += book;
+        for (BibliotecaBook book: books) {
+            result += book.getDetails();
             result += "\n";
         }
         return result;
@@ -33,10 +30,9 @@ public class BibliotecaShelf {
 
     String getAllAvailableBooks() {
         String result = "";
-        Set<Map.Entry<String, AvailabilityStatus>> listOfAllBooksWithStatus = books.entrySet();
-        for (Map.Entry<String, AvailabilityStatus> entry: listOfAllBooksWithStatus) {
-            if (isAvailable(entry.getValue())) {
-                result += entry.getKey();
+        for (BibliotecaBook book: books) {
+            if (book.getAvailability() == com.twu.biblioteca.AvailabilityStatus.AVAILABLE){
+                result += book.getDetails();
                 result += "\n";
             }
         }
@@ -45,13 +41,13 @@ public class BibliotecaShelf {
 
     CheckoutStatus checkoutBook(String bookName) {
         try {
-            AvailabilityStatus bookAvailability = books.get(bookName);
-            if (isAvailable(bookAvailability)) {
-                books.replace(bookName, AvailabilityStatus.CHECKEDOUT);
-                return CheckoutStatus.SUCCESS;
-            } else {
-                return CheckoutStatus.FAILURE;
+            for (BibliotecaBook book: books) {
+                if (book.getName() == bookName && book.getAvailability() == com.twu.biblioteca.AvailabilityStatus.AVAILABLE) {
+                    book.checkOut();
+                    return CheckoutStatus.SUCCESS;
+                }
             }
+            return CheckoutStatus.FAILURE;
         } catch (Exception e) {
             return CheckoutStatus.FAILURE;
         }
@@ -59,13 +55,13 @@ public class BibliotecaShelf {
 
     ReturnStatus returnBook(String bookName) {
         try {
-            AvailabilityStatus bookAvailability = books.get(bookName);
-            if (isNotAvailable(bookAvailability)) {
-                books.replace(bookName, AvailabilityStatus.AVAILABLE);
-                return ReturnStatus.SUCCESS;
-            } else {
-                return ReturnStatus.FAILURE;
+            for (BibliotecaBook book: books) {
+                if (book.getName() == bookName && book.getAvailability() == com.twu.biblioteca.AvailabilityStatus.CHECKEDOUT) {
+                    book.isReturned();
+                    return ReturnStatus.SUCCESS;
+                }
             }
+            return ReturnStatus.FAILURE;
         } catch (Exception e) {
             return ReturnStatus.FAILURE;
         }

@@ -12,9 +12,10 @@ class BibliotecaUI {
     private final String welcomeMessage = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!";
     private final String mainMenu = "------- Main menu -------\n" +
             "1) List of books\n" +
-            "2) Checkout book\n" +
+            "2) Check out book\n" +
             "3) Return book\n" +
             "4) List of movies\n" +
+            "5) Check out movie\n" +
             "0) Exit";
     private final String invalidOptionMessage = "Please select a valid option!";
     private final String exitMessage = "Exiting application";
@@ -24,6 +25,8 @@ class BibliotecaUI {
     private final String failureReturnMessage = "That is not a valid book to return.";
     private final String successCheckoutMessage = "Thank you! Enjoy the book";
     private final String failureCheckoutMessage = "Sorry, that book is not available";
+
+    private final String checkOutMovieQuestion = "Which movie do you want to check out?";
 
 
     BibliotecaUI() {
@@ -70,6 +73,9 @@ class BibliotecaUI {
             }
             else if (selection == 4) {
                 print(movieShelf.getAllAvailableResources());
+            }
+            else if (selection == 5) {
+                print(checkOutMovieQuestion);
             }
             else if (selection == 0) {
                 print(exitMessage);

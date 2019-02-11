@@ -25,9 +25,10 @@ public class BibliotecaUITest {
     private final String exitMessage = "Exiting application\n";
     private final String mainMenu = "------- Main menu -------\n" +
             "1) List of books\n" +
-            "2) Checkout book\n" +
+            "2) Check out book\n" +
             "3) Return book\n" +
             "4) List of movies\n" +
+            "5) Check out movie\n" +
             "0) Exit\n";
 
     private final String listOfAllBooksWithAuthorAndPublishedYear = "An Ocean of Minutes | Thea Lim | 2018\n" +
@@ -49,6 +50,7 @@ public class BibliotecaUITest {
             "I Not Stupid | 2002 | Jack Neo | 7.3\n" +
             "881 | 2007 | Royston Tan | 6.5\n" +
             "Chicken Rice War | 2000 | Chee Kong Cheah | 6.3\n";
+    private final String checkOutMovieQuestion = "Which movie do you want to check out?";
 
     @Before
     public void setUpStreams() {
@@ -175,5 +177,12 @@ public class BibliotecaUITest {
         givenUserInputs(Arrays.asList("4", "0"));
         bibliotecaUI.start();
         assertThat(outContent.toString(), containsString(listOfAllMovies));
+    }
+
+    @Test
+    public void shouldAskForMovieToCheckOut() {
+        givenUserInputs(Arrays.asList("5","881","0"));
+        bibliotecaUI.start();
+        assertThat(outContent.toString(), containsString(checkOutMovieQuestion));
     }
 }

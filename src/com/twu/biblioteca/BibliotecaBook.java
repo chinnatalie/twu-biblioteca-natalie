@@ -36,4 +36,11 @@ public class BibliotecaBook {
     public void isReturned() {
         this.availability = AvailabilityStatus.AVAILABLE;
     }
+
+    public boolean isAvailable() {
+        if (this.availability == AvailabilityStatus.AVAILABLE)
+            return true;
+        else
+            return false;
+    }
 }

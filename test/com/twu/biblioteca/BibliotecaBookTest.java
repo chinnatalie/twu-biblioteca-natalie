@@ -30,4 +30,9 @@ public class BibliotecaBookTest {
         assertThat(details, containsString(author));
         assertThat(details, containsString(publishedYear));
     }
+
+    @Test
+    public void shouldReturnAvailability() {
+        assertThat(book.getAvailability(), is(AvailabilityStatus.AVAILABLE));
+    }
 }

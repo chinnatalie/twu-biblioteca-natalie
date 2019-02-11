@@ -1,7 +1,8 @@
 package com.twu.biblioteca;
 
+enum AvailabilityStatus {AVAILABLE, CHECKEDOUT}
+
 public class BibliotecaBook {
-    private enum AvailabilityStatus {AVAILABLE, CHECKEDOUT}
 
     private final String name;
     private final String author;
@@ -22,5 +23,9 @@ public class BibliotecaBook {
     public String getDetails() {
         String details = name + " | " + author + " | " + publishedYear;
         return details;
+    }
+
+    public AvailabilityStatus getAvailability() {
+        return this.availability;
     }
 }

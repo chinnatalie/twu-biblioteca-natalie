@@ -43,4 +43,11 @@ public class BibliotecaBook {
         else
             return false;
     }
+
+    public boolean isCheckedOut() {
+        if (this.availability == AvailabilityStatus.CHECKEDOUT)
+            return true;
+        else
+            return false;
+    }
 }

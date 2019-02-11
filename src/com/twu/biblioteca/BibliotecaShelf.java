@@ -42,7 +42,7 @@ public class BibliotecaShelf {
     CheckoutStatus checkoutBook(String bookName) {
         try {
             for (BibliotecaBook book: books) {
-                if (book.getName() == bookName && book.getAvailability() == com.twu.biblioteca.AvailabilityStatus.AVAILABLE) {
+                if (book.getName() == bookName && book.isAvailable()) {
                     book.checkOut();
                     return CheckoutStatus.SUCCESS;
                 }

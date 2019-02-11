@@ -53,4 +53,16 @@ public class BibliotecaBookTest {
     public void shouldReturnTrueIfAvailable() {
         assertThat(book.isAvailable(), is(true));
     }
+
+    @Test
+    public void shouldReturnFalseIfUnavailable() {
+        book.checkOut();
+        assertThat(book.isAvailable(), is(false));
+    }
+
+    @Test
+    public void shouldReturnTrueIfCheckedOut() {
+        book.checkOut();
+        assertThat(book.isCheckedOut(), is(true));
+    }
 }

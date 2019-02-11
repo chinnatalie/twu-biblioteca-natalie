@@ -66,7 +66,7 @@ class BibliotecaUI {
                 returnBook(scanner.next());
             }
             else if (selection == 4) {
-                print(movieShelf.getAllAvailableBooks());
+                print(movieShelf.getAllAvailableResources());
             }
             else if (selection == 0) {
                 print(exitMessage);

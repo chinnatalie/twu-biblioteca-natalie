@@ -36,7 +36,7 @@ public class BibliotecaShelfTest {
     @Test
     public void shouldCheckoutBook() {
         bibliotecaShelf.checkoutBook("Rainbirds");
-        assertThat(bibliotecaShelf.getAllAvailableBooks(), is("An Ocean of Minutes | Thea Lim | 2018\n" +
+        assertThat(bibliotecaShelf.getAllAvailableResources(), is("An Ocean of Minutes | Thea Lim | 2018\n" +
                 "Bury What We Cannot Take | Kirsten Chen | 2018\n" +
                 "Ponti | Sharlene Teo | 2018\n" +
                 "The Descent of Monsters (The Tensorate Series) | JY Yang | 2018\n"));
@@ -54,7 +54,7 @@ public class BibliotecaShelfTest {
                 "Bury What We Cannot Take | Kirsten Chen | 2018\n" +
                 "Rainbirds | Clarissa Goenawan | 2018\n" +
                 "The Descent of Monsters (The Tensorate Series) | JY Yang | 2018\n";
-        assertThat(bibliotecaShelf.getAllAvailableBooks(), is(updatedList));
+        assertThat(bibliotecaShelf.getAllAvailableResources(), is(updatedList));
     }
 
     @Test
@@ -78,7 +78,7 @@ public class BibliotecaShelfTest {
     public void shouldSeeBookAfterReturn() {
         bibliotecaShelf.checkoutBook("Ponti");
         bibliotecaShelf.returnBook("Ponti");
-        assertThat(bibliotecaShelf.getAllAvailableBooks(), is(listOfAllBooks));
+        assertThat(bibliotecaShelf.getAllAvailableResources(), is(listOfAllBooks));
     }
 
     @Test

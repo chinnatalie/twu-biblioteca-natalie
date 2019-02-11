@@ -31,7 +31,7 @@ public class BibliotecaShelf {
         return result;
     }
 
-    String getAllAvailableBooks() {
+    String getAllAvailableResources() {
         String result = "";
         for (BibliotecaResource book: books) {
             if (book.isAvailable()){

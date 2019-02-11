@@ -27,7 +27,7 @@ class BibliotecaUI {
 
     private final String checkOutMovieQuestion = "Which movie do you want to check out?";
     private final String successMovieCheckOutMessage = "Thank you! Enjoy the movie";
-
+    private final String failureMovieCheckOutMessage = "Sorry, that movie is not available";
 
     BibliotecaUI() {
         bookShelf = new BibliotecaShelf();
@@ -129,6 +129,9 @@ class BibliotecaUI {
         switch (checkOutStatus) {
             case SUCCESS:
                 print(successMovieCheckOutMessage);
+                break;
+            case FAILURE:
+                print(failureMovieCheckOutMessage);
                 break;
         }
     }

@@ -52,6 +52,7 @@ public class BibliotecaUITest {
             "Chicken Rice War | 2000 | Chee Kong Cheah | 6.3\n";
     private final String checkOutMovieQuestion = "Which movie do you want to check out?";
     private final String successMovieCheckOutMessage = "Thank you! Enjoy the movie";
+    private final String failureMovieCheckOutMessage = "Sorry, that movie is not available";
 
     @Before
     public void setUpStreams() {
@@ -191,5 +192,11 @@ public class BibliotecaUITest {
     public void shouldSeeSuccessMessageOnMovieCheckOut() {
         bibliotecaUI.checkOutMovie("881");
         assertThat(outContent.toString(), containsString(successMovieCheckOutMessage));
+    }
+
+    @Test
+    public void shouldSeeFailureMessageOnMovieCheckOut() {
+        bibliotecaUI.checkOutMovie("Spirited Away");
+        assertThat(outContent.toString(), containsString(failureMovieCheckOutMessage));
     }
 }

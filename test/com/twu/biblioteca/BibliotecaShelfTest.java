@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.sun.tools.javac.comp.Check;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -106,5 +107,10 @@ public class BibliotecaShelfTest {
     @Test
     public void shouldReturnSuccessStatusOnMovieCheckOut() {
         assertThat(bibliotecaMovieShelf.checkoutResource("881"), is(CheckoutStatus.SUCCESS));
+    }
+
+    @Test
+    public void shouldReturnFailureStatusOnMovieCheckOut() {
+        assertThat(bibliotecaMovieShelf.checkoutResource("Spirited Away"), is(CheckoutStatus.FAILURE));
     }
 }

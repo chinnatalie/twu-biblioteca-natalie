@@ -7,7 +7,6 @@ enum ReturnStatus {SUCCESS, FAILURE}
 
 public class BibliotecaShelf {
 
-    private enum AvailabilityStatus {AVAILABLE, CHECKEDOUT}
     private ArrayList<BibliotecaBook> books;
 
     BibliotecaShelf() {
@@ -31,7 +30,7 @@ public class BibliotecaShelf {
     String getAllAvailableBooks() {
         String result = "";
         for (BibliotecaBook book: books) {
-            if (book.getAvailability() == com.twu.biblioteca.AvailabilityStatus.AVAILABLE){
+            if (book.isAvailable()){
                 result += book.getDetails();
                 result += "\n";
             }
@@ -56,7 +55,7 @@ public class BibliotecaShelf {
     ReturnStatus returnBook(String bookName) {
         try {
             for (BibliotecaBook book: books) {
-                if (book.getName() == bookName && book.getAvailability() == com.twu.biblioteca.AvailabilityStatus.CHECKEDOUT) {
+                if (book.getName() == bookName && book.isCheckedOut()) {
                     book.isReturned();
                     return ReturnStatus.SUCCESS;
                 }
@@ -65,19 +64,5 @@ public class BibliotecaShelf {
         } catch (Exception e) {
             return ReturnStatus.FAILURE;
         }
-    }
-
-    private boolean isAvailable(AvailabilityStatus status) {
-        if (status.equals(AvailabilityStatus.AVAILABLE))
-            return true;
-        else
-            return false;
-    }
-
-    private boolean isNotAvailable(AvailabilityStatus status) {
-        if (status.equals(AvailabilityStatus.CHECKEDOUT))
-            return true;
-        else
-            return false;
     }
 }

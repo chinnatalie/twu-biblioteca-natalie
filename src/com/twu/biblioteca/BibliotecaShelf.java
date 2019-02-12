@@ -68,7 +68,7 @@ public class BibliotecaShelf {
     CheckoutStatus checkoutResource(String borrower, String resourceName) {
         try {
             for (BibliotecaResource resource: resources) {
-                if (resource.getName().equals(resourceName) && resource.isAvailable()) {
+                if (resource.hasName(resourceName) && resource.isAvailable()) {
                     resource.checkOut(borrower);
                     return CheckoutStatus.SUCCESS;
                 }
@@ -82,7 +82,7 @@ public class BibliotecaShelf {
     ReturnStatus returnResource(String bookResource) {
         try {
             for (BibliotecaResource resource: resources) {
-                if (resource.getName().equals(bookResource) && resource.isCheckedOut()) {
+                if (resource.hasName(bookResource) && resource.isCheckedOut()) {
                     resource.checkIn();
                     return ReturnStatus.SUCCESS;
                 }

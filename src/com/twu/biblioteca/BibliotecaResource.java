@@ -70,6 +70,13 @@ abstract class BibliotecaResource {
         return borrower;
     }
 
+    public boolean hasName(String name) {
+        if (this.name.equals(name))
+            return true;
+        else
+            return false;
+    }
+
     private boolean isBorrowedBy(String user) {
         if (borrower.get().equals(user))
             return true;

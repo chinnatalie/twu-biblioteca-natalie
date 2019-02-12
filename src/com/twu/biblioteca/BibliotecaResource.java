@@ -31,6 +31,10 @@ abstract class BibliotecaResource {
     
     abstract String getDetails();
 
+    public String getLoan() {
+        return name + " | " + borrower.get();
+    }
+
     public boolean isAvailable() {
         if (this.availability == AvailabilityStatus.AVAILABLE)
             return true;

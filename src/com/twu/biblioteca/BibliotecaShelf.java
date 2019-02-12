@@ -47,7 +47,7 @@ public class BibliotecaShelf {
         String result = "";
         for (BibliotecaResource resource: resources) {
             if (resource.isCheckedOut()) {
-                result += resource.getName() + " | " + resource.getBorrower().get();
+                result += resource.getLoan();
                 result += "\n";
             }
         }

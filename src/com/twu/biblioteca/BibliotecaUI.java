@@ -30,6 +30,9 @@ class BibliotecaUI {
     private final String failureMovieCheckOutMessage = "Sorry, that movie is not available";
 
     private final String loginMessage = "You need to login to use Biblioteca.";
+    private final String loginNumberQuestion = "Your library number: ";
+
+    private Scanner scanner;
 
     BibliotecaUI() {
         bookShelf = new BibliotecaShelf();
@@ -43,6 +46,7 @@ class BibliotecaUI {
 
     void start() {
         print(welcomeMessage);
+        login();
         printMainMenu();
         selectMenuOption();
     }
@@ -60,7 +64,7 @@ class BibliotecaUI {
     }
 
     void selectMenuOption() {
-        Scanner scanner = new Scanner(System.in);
+        openScanner();
         while(true) {
             Integer selection = getOptionSelected(scanner.next());
             if (selection == 1)
@@ -86,6 +90,7 @@ class BibliotecaUI {
             else
                 print(invalidOptionMessage);
         }
+        closeScanner();
     }
 
     void returnBook(String bookName) {
@@ -138,7 +143,17 @@ class BibliotecaUI {
         }
     }
 
+    private void openScanner() {
+        scanner = new Scanner(System.in);
+    }
+    private void closeScanner() {
+        scanner.close();
+    }
+
     public void login() {
+        openScanner();
         print(loginMessage);
+        print(loginNumberQuestion);
+        closeScanner();
     }
 }

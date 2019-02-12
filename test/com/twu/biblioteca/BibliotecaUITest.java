@@ -54,7 +54,8 @@ public class BibliotecaUITest {
     private final String successMovieCheckOutMessage = "Thank you! Enjoy the movie";
     private final String failureMovieCheckOutMessage = "Sorry, that movie is not available";
 
-    private final String loginMessage = "You need to login to use Biblioteca.";
+    private final String loginMessage = "You need to login to use Biblioteca.\n";
+    private final String loginNumberQuestion = "Your library number: ";
 
     @Before
     public void setUpStreams() {
@@ -98,7 +99,8 @@ public class BibliotecaUITest {
     public void shouldSeeWelcomeMessageThenMainMenu() {
         givenUserInputs(Arrays.asList("1", "0"));
         bibliotecaUI.start();
-        assertThat(outContent.toString(),startsWith(welcomeMessage + mainMenu));
+        assertThat(outContent.toString(), containsString(welcomeMessage));
+        assertThat(outContent.toString(), containsString(mainMenu));
     }
 
     @Test
@@ -206,5 +208,11 @@ public class BibliotecaUITest {
     public void shouldShowLoginMessage() {
         bibliotecaUI.login();
         assertThat(outContent.toString(), containsString(loginMessage));
+    }
+
+    @Test
+    public void shouldAskForLibraryNumber() {
+        bibliotecaUI.login();
+        assertThat(outContent.toString(), containsString(loginNumberQuestion));
     }
 }

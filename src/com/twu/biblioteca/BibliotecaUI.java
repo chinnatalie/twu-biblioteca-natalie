@@ -58,18 +58,6 @@ class BibliotecaUI {
         selectMenuOption();
     }
 
-    void printWelcomeMessage() {
-        print(welcomeMessage);
-    }
-
-    void printAllBooksWithAuthorAndPublishedYear() {
-        print(bookShelf.getAllResources());
-    }
-
-    void printMainMenu() {
-        print(mainMenu);
-    }
-
     void selectMenuOption() {
         while(true) {
             Integer selection = getOptionSelected(scanner.next());
@@ -90,7 +78,7 @@ class BibliotecaUI {
                 print(checkOutMovieQuestion);
             }
             else if (selection == 6) {
-                print(bookShelf.getAllCheckedOutResourcesOfUser(accountManager.getLoggedInUser()));
+                printCheckedOutBooks();
             }
             else if (selection == 0) {
                 print(exitMessage);
@@ -136,9 +124,25 @@ class BibliotecaUI {
         return selection;
     }
 
-    private void print(String message) {
-        System.out.println(message);
+    void printWelcomeMessage() {
+        print(welcomeMessage);
     }
+
+    void printAllBooksWithAuthorAndPublishedYear() {
+        print(bookShelf.getAllResources());
+    }
+
+    void printMainMenu() {
+        print(mainMenu);
+    }
+
+    private void printCheckedOutBooks() {
+        String libraryNumber = accountManager.getLoggedInUser();
+        String listOfBooks = bookShelf.getAllCheckedOutResourcesOfUser(libraryNumber);
+        print(listOfBooks);
+    }
+
+    private void print(String message) { System.out.println(message); }
 
     void checkOutMovie(String movieName) {
         String borrower = accountManager.getLoggedInUser();

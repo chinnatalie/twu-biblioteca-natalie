@@ -10,7 +10,7 @@ public class BibliotecaAccountManager {
 
     BibliotecaAccountManager() {
         accounts = new ArrayList<>();
-        accounts.add(new BibliotecaAccount("987-6543", "1234", "Ho Kam Bing", "kambing.ho@thoughtworks.com", "+65 8765 4321"));
+        accounts.add(new BibliotecaAccount("987-6543", "1234", "Ho Kam Bing", "kambing.ho@thoughtworks.com", "+65 8765 4321", true));
         accounts.add(new BibliotecaAccount("123-4567", "password123", "Tan Ting Gi", "tinggi.tan@thoughtworks.com", "+65 9876 5432"));
         accounts.add(new BibliotecaAccount("876-5432", "helloworld", "Lee Na Si", "nasi.lee@thoughtworks.com", "+65 9123 3219"));
         accounts.add(new BibliotecaAccount("234-5678", "sushi", "Kuan Ah Yam", "ahyam.kuan@thoughtworks.com", "+65 8000 0000"));
@@ -38,5 +38,14 @@ public class BibliotecaAccountManager {
             }
         }
         return "No info found";
+    }
+
+    public boolean isLoggedInByLibrarian() {
+        for (BibliotecaAccount account : accounts) {
+            if (account.hasLibraryNumber(loggedInUser.get()) && account.isLibrarian()) {
+                return true;
+            }
+        }
+        return false;
     }
 }

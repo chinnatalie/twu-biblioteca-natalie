@@ -44,4 +44,10 @@ public class BibliotecaAccountManagerTest {
         accountManager.loginUser(libraryNumber, password);
         assertThat(accountManager.getLoggedInUserDetails(), is(accountDetails));
     }
+
+    @Test
+    public void shouldReturnTrueIfLoggedInUserIsLibrarian() {
+        accountManager.loginUser("987-6543", "1234");
+        assertThat(accountManager.isLoggedInByLibrarian(), is(true));
+    }
 }

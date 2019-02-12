@@ -17,6 +17,7 @@ class BibliotecaUI {
             "3) Return book\n" +
             "4) List of movies\n" +
             "5) Check out movie\n" +
+            "6) Books on loan\n" +
             "0) Exit";
     private final String invalidOptionMessage = "Please select a valid option!";
     private final String exitMessage = "Exiting application";
@@ -50,7 +51,9 @@ class BibliotecaUI {
     }
 
     void start() {
+        openScanner();
         print(welcomeMessage);
+        login();
         printMainMenu();
         selectMenuOption();
     }
@@ -68,7 +71,7 @@ class BibliotecaUI {
     }
 
     void selectMenuOption() {
-        openScanner();
+//        openScanner();
         while(true) {
             Integer selection = getOptionSelected(scanner.next());
             if (selection == 1)
@@ -87,6 +90,9 @@ class BibliotecaUI {
             else if (selection == 5) {
                 print(checkOutMovieQuestion);
             }
+            else if (selection == 6) {
+                print(bookShelf.getAllCheckedOutResourcesOfUser(accountManager.getLoggedInUser()));
+            }
             else if (selection == 0) {
                 print(exitMessage);
                 break;
@@ -94,7 +100,7 @@ class BibliotecaUI {
             else
                 print(invalidOptionMessage);
         }
-        closeScanner();
+//        closeScanner();
     }
 
     void returnBook(String bookName) {
@@ -147,7 +153,7 @@ class BibliotecaUI {
         }
     }
 
-    private void openScanner() {
+    void openScanner() {
         scanner = new Scanner(System.in);
     }
     private void closeScanner() {
@@ -155,7 +161,7 @@ class BibliotecaUI {
     }
 
     public void login() {
-        openScanner();
+//        openScanner();
         while (true) {
             print(loginMessage);
             print(loginNumberQuestion);
@@ -168,6 +174,6 @@ class BibliotecaUI {
             } else
                 print(failureLoginMessage);
         }
-        closeScanner();
+//        closeScanner();
     }
 }

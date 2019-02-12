@@ -29,6 +29,7 @@ public class BibliotecaUITest {
             "3) Return book\n" +
             "4) List of movies\n" +
             "5) Check out movie\n" +
+            "6) Books on loan\n" +
             "0) Exit\n";
 
     private final String listOfAllBooksWithAuthorAndPublishedYear = "An Ocean of Minutes | Thea Lim | 2018\n" +
@@ -102,7 +103,7 @@ public class BibliotecaUITest {
 
     @Test
     public void shouldSeeWelcomeMessageThenMainMenu() {
-        givenUserInputs(Arrays.asList("1", "0"));
+        givenUserInputs(Arrays.asList(libraryNumber, password, "1", "0"));
         bibliotecaUI.start();
         assertThat(outContent.toString(), containsString(welcomeMessage));
         assertThat(outContent.toString(), containsString(mainMenu));
@@ -111,6 +112,7 @@ public class BibliotecaUITest {
     @Test
     public void shouldSeeAllBooksIfSelectedFromMainMenu() {
         givenUserInputs(Arrays.asList("1", "0"));
+        bibliotecaUI.openScanner();
         bibliotecaUI.selectMenuOption();
         assertThat(outContent.toString(),startsWith(listOfAllBooksWithAuthorAndPublishedYear));
     }
@@ -118,20 +120,21 @@ public class BibliotecaUITest {
     @Test
     public void shouldSeeInvalidMessageWhenSelectedOptionIsInvalid() {
         givenUserInputs(Arrays.asList("120", "0"));
+        bibliotecaUI.openScanner();
         bibliotecaUI.selectMenuOption();
         assertThat(outContent.toString(),startsWith(invalidOptionMessage));
     }
 
     @Test
     public void shouldSeeAllBooksIfSelectedAfterMainMenu() {
-        givenUserInputs(Arrays.asList("1", "0"));
+        givenUserInputs(Arrays.asList(libraryNumber, password, "1", "0"));
         bibliotecaUI.start();
         assertThat(outContent.toString(), containsString(mainMenu + listOfAllBooksWithAuthorAndPublishedYear));
     }
 
     @Test
     public void shouldQuitApplicationIfSelected() {
-        givenUserInputs(Arrays.asList("1", "1", "1", "0"));
+        givenUserInputs(Arrays.asList(libraryNumber, password, "1", "1", "1", "0"));
         bibliotecaUI.start();
         assertThat(outContent.toString(),endsWith(exitMessage));
     }
@@ -151,14 +154,14 @@ public class BibliotecaUITest {
 
     @Test
     public void shouldAskForBookToCheckout() {
-        givenUserInputs(Arrays.asList("1", "2", "Ponti", "0"));
+        givenUserInputs(Arrays.asList(libraryNumber, password, "1", "2", "Ponti", "0"));
         bibliotecaUI.start();
         assertThat(outContent.toString(), containsString(checkoutBookQuestion));
     }
 
     @Test
     public void shouldAskForBookToReturn() {
-        givenUserInputs(Arrays.asList("3", "Ponti", "0"));
+        givenUserInputs(Arrays.asList(libraryNumber, password, "3", "Ponti", "0"));
         bibliotecaUI.start();
         assertThat(outContent.toString(), containsString(returnBookQuestion));
     }
@@ -178,21 +181,21 @@ public class BibliotecaUITest {
 
     @Test
     public void shouldSeeInvalidMessageWhenSelectedOptionIsNonInteger() {
-        givenUserInputs(Arrays.asList("helloworld", "0"));
+        givenUserInputs(Arrays.asList(libraryNumber, password, "helloworld", "0"));
         bibliotecaUI.start();
         assertThat(outContent.toString(), containsString(invalidOptionMessage));
     }
 
     @Test
     public void shouldSeeAllMoviesIfSelectedFromMaimMenu() {
-        givenUserInputs(Arrays.asList("4", "0"));
+        givenUserInputs(Arrays.asList(libraryNumber, password, "4", "0"));
         bibliotecaUI.start();
         assertThat(outContent.toString(), containsString(listOfAllMovies));
     }
 
     @Test
     public void shouldAskForMovieToCheckOut() {
-        givenUserInputs(Arrays.asList("5","881","0"));
+        givenUserInputs(Arrays.asList(libraryNumber, password, "5","881","0"));
         bibliotecaUI.start();
         assertThat(outContent.toString(), containsString(checkOutMovieQuestion));
     }
@@ -212,6 +215,7 @@ public class BibliotecaUITest {
     @Test
     public void shouldShowLoginMessage() {
         givenUserInputs(Arrays.asList(libraryNumber, password));
+        bibliotecaUI.openScanner();
         bibliotecaUI.login();
         assertThat(outContent.toString(), containsString(loginMessage));
     }
@@ -219,6 +223,7 @@ public class BibliotecaUITest {
     @Test
     public void shouldAskForLibraryNumber() {
         givenUserInputs(Arrays.asList(libraryNumber, password));
+        bibliotecaUI.openScanner();
         bibliotecaUI.login();
         assertThat(outContent.toString(), containsString(loginNumberQuestion));
     }
@@ -226,6 +231,7 @@ public class BibliotecaUITest {
     @Test
     public void shouldAskForPassword() {
         givenUserInputs(Arrays.asList(libraryNumber, password));
+        bibliotecaUI.openScanner();
         bibliotecaUI.login();
         assertThat(outContent.toString(), containsString(loginPasswordQuestion));
     }
@@ -233,6 +239,7 @@ public class BibliotecaUITest {
     @Test
     public void shouldSeeSuccessLogin() {
         givenUserInputs(Arrays.asList(libraryNumber, password));
+        bibliotecaUI.openScanner();
         bibliotecaUI.login();
         assertThat(outContent.toString(), containsString(successLoginMessage));
     }
@@ -240,6 +247,7 @@ public class BibliotecaUITest {
     @Test
     public void shouldSeeFailureLogin() {
         givenUserInputs(Arrays.asList(libraryNumber, "notthepassword", libraryNumber, password));
+        bibliotecaUI.openScanner();
         bibliotecaUI.login();
         assertThat(outContent.toString(), containsString(failureLoginMessage));
     }
@@ -247,7 +255,15 @@ public class BibliotecaUITest {
     @Test
     public void shouldAskForLoginUntilSuccessful() {
         givenUserInputs(Arrays.asList(libraryNumber, "wrongTry1", libraryNumber, "wrongTry2", libraryNumber, password));
+        bibliotecaUI.openScanner();
         bibliotecaUI.login();
         assertThat(outContent.toString(), containsString(successLoginMessage));
+    }
+
+    @Test
+    public void shouldSeeCheckedOutBooks() {
+        givenUserInputs(Arrays.asList(libraryNumber, password, "2", "Ponti", "6", "0"));
+        bibliotecaUI.start();
+        assertThat(outContent.toString(), containsString("Ponti | 123-4567"));
     }
 }

@@ -18,6 +18,7 @@ class BibliotecaUI {
             "4) List of movies\n" +
             "5) Check out movie\n" +
             "6) Books on loan\n" +
+            "7) Account details\n" +
             "0) Exit";
     private final String invalidOptionMessage = "Please select a valid option!";
     private final String exitMessage = "Exiting application";
@@ -97,6 +98,8 @@ class BibliotecaUI {
                 print(exitMessage);
                 break;
             }
+            else if (selection == 7)
+                print(accountManager.getLoggedInUserDetails());
             else
                 print(invalidOptionMessage);
         }

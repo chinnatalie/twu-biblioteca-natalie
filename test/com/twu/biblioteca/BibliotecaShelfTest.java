@@ -120,4 +120,11 @@ public class BibliotecaShelfTest {
         bibliotecaBookShelf.checkoutResource(borrower, "Rainbirds");
         assertThat(bibliotecaBookShelf.getAllCheckedOutResources(), is(listOfAllCheckedOutBooks));
     }
+
+    @Test
+    public void shouldSeeAllCheckedOutBooksOfUser() {
+        bibliotecaBookShelf.checkoutResource(borrower, book);
+        bibliotecaBookShelf.checkoutResource(borrower, "Rainbirds");
+        assertThat(bibliotecaBookShelf.getAllCheckedOutResourcesOfUser(borrower), is(listOfAllCheckedOutBooks));
+    }
 }

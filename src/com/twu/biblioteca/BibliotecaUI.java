@@ -139,7 +139,7 @@ class BibliotecaUI {
         System.out.println(message);
     }
 
-    public void checkOutMovie(String movieName) {
+    void checkOutMovie(String movieName) {
         CheckoutStatus checkOutStatus = movieShelf.checkoutResource("123-4567", movieName);
         switch (checkOutStatus) {
             case SUCCESS:
@@ -155,7 +155,7 @@ class BibliotecaUI {
         scanner = new Scanner(System.in);
     }
 
-    public void login() {
+    void login() {
         while (true) {
             print(loginMessage);
             print(loginNumberQuestion);

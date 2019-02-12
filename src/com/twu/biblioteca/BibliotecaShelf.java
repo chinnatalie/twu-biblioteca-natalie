@@ -47,7 +47,7 @@ public class BibliotecaShelf {
         try {
             for (BibliotecaResource resource: resources) {
                 if (resource.getName() == resourceName && resource.isAvailable()) {
-                    resource.checkOut();
+                    resource.checkOut("123-4567");
                     return CheckoutStatus.SUCCESS;
                 }
             }

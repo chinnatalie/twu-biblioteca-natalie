@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import java.util.Optional;
+
 enum AvailabilityStatus {AVAILABLE, CHECKEDOUT}
 
 abstract class BibliotecaResource {
@@ -7,6 +9,7 @@ abstract class BibliotecaResource {
     private final String name;
     private final String publishedYear;
     private AvailabilityStatus availability;
+    private Optional<String> borrower;
 
     public BibliotecaResource(String name, String publishedYear) {
         this.name = name;
@@ -42,11 +45,16 @@ abstract class BibliotecaResource {
             return false;
     }
 
-    public void checkOut() {
+    public void checkOut(String borrower) {
         this.availability = AvailabilityStatus.CHECKEDOUT;
+        this.borrower = Optional.ofNullable(borrower);
     }
 
     public void isReturned() {
         this.availability = AvailabilityStatus.AVAILABLE;
+    }
+
+    public Optional<String> getBorrower() {
+        return borrower;
     }
 }

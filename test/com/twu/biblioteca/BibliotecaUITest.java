@@ -56,6 +56,7 @@ public class BibliotecaUITest {
 
     private final String loginMessage = "You need to login to use Biblioteca.\n";
     private final String loginNumberQuestion = "Your library number: ";
+    private final String loginPasswordQuestion = "Your password: ";
 
     @Before
     public void setUpStreams() {
@@ -214,5 +215,11 @@ public class BibliotecaUITest {
     public void shouldAskForLibraryNumber() {
         bibliotecaUI.login();
         assertThat(outContent.toString(), containsString(loginNumberQuestion));
+    }
+
+    @Test
+    public void shouldAskForPassword() {
+        bibliotecaUI.login();
+        assertThat(outContent.toString(), containsString(loginPasswordQuestion));
     }
 }

@@ -31,6 +31,7 @@ class BibliotecaUI {
 
     private final String loginMessage = "You need to login to use Biblioteca.";
     private final String loginNumberQuestion = "Your library number: ";
+    private final String loginPasswordQuestion = "Your password: ";
 
     private Scanner scanner;
 
@@ -154,6 +155,7 @@ class BibliotecaUI {
         openScanner();
         print(loginMessage);
         print(loginNumberQuestion);
+        print(loginPasswordQuestion);
         closeScanner();
     }
 }

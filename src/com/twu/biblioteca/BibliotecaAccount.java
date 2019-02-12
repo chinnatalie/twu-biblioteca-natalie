@@ -9,11 +9,6 @@ public class BibliotecaAccount {
     private String email;
     private String phoneNumber;
     private Membership membership = Membership.MEMBER;
-    
-    BibliotecaAccount(String libraryNumber, String password) {
-        this.libraryNumber = libraryNumber;
-        this.password = password;
-    }
 
     BibliotecaAccount(String libraryNumber, String password, String name, String email, String phoneNumber) {
         this.libraryNumber = libraryNumber;

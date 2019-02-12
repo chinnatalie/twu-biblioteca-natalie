@@ -116,7 +116,6 @@ class BibliotecaUI {
     void checkoutBook() {
         print(checkoutBookQuestion);
         String bookToCheckOut = scanner.nextLine();
-        print(bookToCheckOut);
         String borrower = accountManager.getLoggedInUser();
         CheckoutStatus checkoutStatus = bookShelf.checkoutResource(borrower, bookToCheckOut);
         switch (checkoutStatus) {

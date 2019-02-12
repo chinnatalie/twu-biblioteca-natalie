@@ -82,8 +82,7 @@ class BibliotecaUI {
                 checkoutBook();
             }
             else if (selection == 3) {
-                print(returnBookQuestion);
-                returnBook(scanner.next());
+                returnBook();
             }
             else if (selection == 4) {
                 print(movieShelf.getAllAvailableResources());
@@ -128,9 +127,10 @@ class BibliotecaUI {
         }
     }
 
-
-    void returnBook(String bookName) {
-        ReturnStatus returnStatus = bookShelf.returnResource(bookName);
+    void returnBook() {
+        print(returnBookQuestion);
+        String bookToReturn = scanner.nextLine();
+        ReturnStatus returnStatus = bookShelf.returnResource(bookToReturn);
         switch (returnStatus) {
             case SUCCESS:
                 print(successReturnMessage);

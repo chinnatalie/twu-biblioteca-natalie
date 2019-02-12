@@ -172,16 +172,18 @@ public class BibliotecaUITest {
 
     @Test
     public void shouldSeeSuccessMessageOnReturn() {
-        givenUserInputs(Arrays.asList(bookName));
+        givenUserInputs(Arrays.asList(bookName, bookName));
         bibliotecaUI.openScanner();
         bibliotecaUI.checkoutBook();
-        bibliotecaUI.returnBook(bookName);
+        bibliotecaUI.returnBook();
         assertThat(outContent.toString(), containsString(successReturnMessage));
     }
 
     @Test
     public void shouldSeeFailureMessageOnReturn() {
-        bibliotecaUI.returnBook(bookName);
+        givenUserInputs(Arrays.asList(bookName));
+        bibliotecaUI.openScanner();
+        bibliotecaUI.returnBook();
         assertThat(outContent.toString(), containsString(failureReturnMessage));
     }
 

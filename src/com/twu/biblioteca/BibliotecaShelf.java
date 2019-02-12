@@ -82,7 +82,7 @@ public class BibliotecaShelf {
     ReturnStatus returnResource(String bookResource) {
         try {
             for (BibliotecaResource resource: resources) {
-                if (resource.getName() == bookResource && resource.isCheckedOut()) {
+                if (resource.getName().equals(bookResource) && resource.isCheckedOut()) {
                     resource.checkIn();
                     return ReturnStatus.SUCCESS;
                 }

@@ -49,6 +49,13 @@ abstract class BibliotecaResource {
             return false;
     }
 
+    public boolean isCheckedOutBy(String user) {
+        if (this.isCheckedOut() && borrower.get().equals(user))
+            return true;
+        else
+            return false;
+    }
+
     public void checkOut(String borrower) {
         this.availability = AvailabilityStatus.CHECKEDOUT;
         this.borrower = Optional.ofNullable(borrower);

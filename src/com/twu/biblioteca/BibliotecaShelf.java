@@ -57,7 +57,7 @@ public class BibliotecaShelf {
     public String getAllCheckedOutResourcesOfUser(String borrower) {
         String result = "";
         for (BibliotecaResource resource: resources) {
-            if (resource.isCheckedOut() && resource.getBorrower().get().equals(borrower)) {
+            if (resource.isCheckedOutBy(borrower)) {
                 result += resource.getLoan();
                 result += "\n";
             }

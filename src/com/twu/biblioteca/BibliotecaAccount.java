@@ -1,11 +1,14 @@
 package com.twu.biblioteca;
 
+enum Membership {MEMBER, LIBRARIAN}
+
 public class BibliotecaAccount {
     private String libraryNumber;
     private String password;
     private String name;
     private String email;
     private String phoneNumber;
+    private Membership membership = Membership.MEMBER;
     
     BibliotecaAccount(String libraryNumber, String password) {
         this.libraryNumber = libraryNumber;
@@ -18,6 +21,15 @@ public class BibliotecaAccount {
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
+    }
+
+    BibliotecaAccount(String libraryNumber, String password, String name, String email, String phoneNumber, boolean isLibrarian) {
+        this.libraryNumber = libraryNumber;
+        this.password = password;
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.membership = Membership.LIBRARIAN;
     }
 
     public boolean authenticate(String password) {
@@ -48,5 +60,9 @@ public class BibliotecaAccount {
             return true;
         else
             return false;
+    }
+
+    public boolean isLibrarian() {
+        return membership.equals(Membership.LIBRARIAN);
     }
 }

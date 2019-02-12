@@ -20,9 +20,10 @@ public class BibliotecaAccountTest {
             "Email: tinggi.tan@thoughtworks.com\n" +
             "Phone number: +65 9876 5432\n";
 
+
     @Before
     public void initializeAccount() {
-        account = new BibliotecaAccount(libraryNumber, password, name, email, phoneNumber);
+        account = new BibliotecaAccount(libraryNumber, password, name, email, phoneNumber, true);
     }
 
     @Test
@@ -38,5 +39,10 @@ public class BibliotecaAccountTest {
     @Test
     public void shouldReturnAccountDetails() {
         assertThat(account.getDetails(), is(accountDetails));
+    }
+
+    @Test
+    public void shouldReturnTrueIfLibrarian() {
+        assertThat(account.isLibrarian(), is(true));
     }
 }

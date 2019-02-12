@@ -49,7 +49,7 @@ public class BibliotecaBookTest {
     @Test
     public void shouldReturnAvailableIfReturned() {
         book.checkOut(borrower);
-        book.isReturned();
+        book.checkIn();
         assertThat(book.getAvailability(), is(AvailabilityStatus.AVAILABLE));
     }
 

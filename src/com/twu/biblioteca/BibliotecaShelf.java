@@ -61,7 +61,7 @@ public class BibliotecaShelf {
         try {
             for (BibliotecaResource resource: resources) {
                 if (resource.getName() == bookResource && resource.isCheckedOut()) {
-                    resource.isReturned();
+                    resource.checkIn();
                     return ReturnStatus.SUCCESS;
                 }
             }

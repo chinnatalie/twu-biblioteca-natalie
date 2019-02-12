@@ -50,7 +50,7 @@ abstract class BibliotecaResource {
         this.borrower = Optional.ofNullable(borrower);
     }
 
-    public void isReturned() {
+    public void checkIn() {
         this.availability = AvailabilityStatus.AVAILABLE;
     }
 

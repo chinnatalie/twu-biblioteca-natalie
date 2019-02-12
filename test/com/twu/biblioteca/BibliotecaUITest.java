@@ -57,6 +57,9 @@ public class BibliotecaUITest {
     private final String loginMessage = "You need to login to use Biblioteca.\n";
     private final String loginNumberQuestion = "Your library number: ";
     private final String loginPasswordQuestion = "Your password: ";
+    private final String successLoginMessage = "You have logged in successfully!";
+    private final String libraryNumber = "123-4567";
+    private final String password = "password123";
 
     @Before
     public void setUpStreams() {
@@ -207,29 +210,29 @@ public class BibliotecaUITest {
 
     @Test
     public void shouldShowLoginMessage() {
-        givenUserInputs(Arrays.asList("123-4567", "password123"));
+        givenUserInputs(Arrays.asList(libraryNumber, password));
         bibliotecaUI.login();
         assertThat(outContent.toString(), containsString(loginMessage));
     }
 
     @Test
     public void shouldAskForLibraryNumber() {
-        givenUserInputs(Arrays.asList("123-4567", "password123"));
+        givenUserInputs(Arrays.asList(libraryNumber, password));
         bibliotecaUI.login();
         assertThat(outContent.toString(), containsString(loginNumberQuestion));
     }
 
     @Test
     public void shouldAskForPassword() {
-        givenUserInputs(Arrays.asList("123-4567", "password123"));
+        givenUserInputs(Arrays.asList(libraryNumber, password));
         bibliotecaUI.login();
         assertThat(outContent.toString(), containsString(loginPasswordQuestion));
     }
 
     @Test
     public void shouldSeeSuccessLogin() {
-        givenUserInputs(Arrays.asList("876-5432", "helloworld"));
+        givenUserInputs(Arrays.asList(libraryNumber, password));
         bibliotecaUI.login();
-        assertThat(outContent.toString(), containsString("logged in"));
+        assertThat(outContent.toString(), containsString(successLoginMessage));
     }
 }

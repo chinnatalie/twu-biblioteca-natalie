@@ -52,6 +52,7 @@ abstract class BibliotecaResource {
 
     public void checkIn() {
         this.availability = AvailabilityStatus.AVAILABLE;
+        this.borrower = Optional.empty();
     }
 
     public Optional<String> getBorrower() {

@@ -75,4 +75,11 @@ public class BibliotecaBookTest {
         book.checkOut(borrower);
         assertThat(book.getBorrower(), is(Optional.ofNullable("123-4567")));
     }
+
+    @Test
+    public void shouldReturnEmptyAfterCheckIn() {
+        book.checkOut(borrower);
+        book.checkIn();
+        assertThat(book.getBorrower(), is(Optional.empty()));
+    }
 }

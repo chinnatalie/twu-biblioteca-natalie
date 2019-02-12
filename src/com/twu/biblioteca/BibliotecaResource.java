@@ -50,7 +50,7 @@ abstract class BibliotecaResource {
     }
 
     public boolean isCheckedOutBy(String user) {
-        if (this.isCheckedOut() && borrower.get().equals(user))
+        if (this.isCheckedOut() && isBorrowedBy(user))
             return true;
         else
             return false;
@@ -68,5 +68,12 @@ abstract class BibliotecaResource {
 
     public Optional<String> getBorrower() {
         return borrower;
+    }
+
+    private boolean isBorrowedBy(String user) {
+        if (borrower.get().equals(user))
+            return true;
+        else
+            return false;
     }
 }

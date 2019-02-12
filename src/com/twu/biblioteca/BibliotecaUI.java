@@ -88,7 +88,7 @@ class BibliotecaUI {
                 print(movieShelf.getAllAvailableResources());
             }
             else if (selection == 5) {
-                print(checkOutMovieQuestion);
+                checkOutMovie();
             }
             else if (selection == 6) {
                 printCheckedOutBooks();
@@ -141,9 +141,11 @@ class BibliotecaUI {
         }
     }
 
-    void checkOutMovie(String movieName) {
+    void checkOutMovie() {
+        print(checkOutMovieQuestion);
+        String movieToCheckOut = scanner.nextLine();
         String borrower = accountManager.getLoggedInUser();
-        CheckoutStatus checkOutStatus = movieShelf.checkoutResource(borrower, movieName);
+        CheckoutStatus checkOutStatus = movieShelf.checkoutResource(borrower, movieToCheckOut);
         switch (checkOutStatus) {
             case SUCCESS:
                 print(successMovieCheckOutMessage);

@@ -210,13 +210,17 @@ public class BibliotecaUITest {
 
     @Test
     public void shouldSeeSuccessMessageOnMovieCheckOut() {
-        bibliotecaUI.checkOutMovie("881");
+        givenUserInputs(Arrays.asList("881"));
+        bibliotecaUI.openScanner();
+        bibliotecaUI.checkOutMovie();
         assertThat(outContent.toString(), containsString(successMovieCheckOutMessage));
     }
 
     @Test
     public void shouldSeeFailureMessageOnMovieCheckOut() {
-        bibliotecaUI.checkOutMovie("Spirited Away");
+        givenUserInputs(Arrays.asList("Spirited Away"));
+        bibliotecaUI.openScanner();
+        bibliotecaUI.checkOutMovie();
         assertThat(outContent.toString(), containsString(failureMovieCheckOutMessage));
     }
 

@@ -98,7 +98,7 @@ class BibliotecaUI {
             else if (selection == 7)
                 print(accountManager.getLoggedInUserDetails());
             else if (selection == 9) {
-                print(bookShelf.getAllCheckedOutResources());
+                printAllCheckedOutBooksIfLibrarian();
             }
             else if (selection == 0) {
                 print(exitMessage);
@@ -117,6 +117,13 @@ class BibliotecaUI {
             selection = -1;
         }
         return selection;
+    }
+
+    private void printAllCheckedOutBooksIfLibrarian() {
+        if (accountManager.isLoggedInByLibrarian())
+            print(bookShelf.getAllCheckedOutResources());
+        else
+            print("You are not authorized to view this!");
     }
 
     void checkoutBook() {

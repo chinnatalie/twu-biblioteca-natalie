@@ -298,4 +298,11 @@ public class BibliotecaUITest {
         bibliotecaUI.start();
         assertThat(outContent.toString(), containsString("The Descent of Monsters (The Tensorate Series) | 987-6543"));
     }
+
+    @Test
+    public void shouldNotSeeAllCheckedOutBooksIfNotLibrarian() {
+        givenUserInputs(Arrays.asList(libraryNumber, password, "2", bookName, "9", "0"));
+        bibliotecaUI.start();
+        assertThat(outContent.toString(), containsString("You are not authorized to view this!"));
+    }
 }

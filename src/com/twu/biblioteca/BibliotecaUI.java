@@ -44,7 +44,13 @@ class BibliotecaUI {
     private static Scanner scanner;
 
     BibliotecaUI() {
-        bookShelf = new BibliotecaShelf();
+        bookShelf = new BibliotecaShelf(Arrays.asList(
+                new BibliotecaBook("An Ocean of Minutes", "Thea Lim", "2018"),
+                new BibliotecaBook("Bury What We Cannot Take", "Kirsten Chen", "2018"),
+                new BibliotecaBook( "Ponti", "Sharlene Teo", "2018"),
+                new BibliotecaBook("Rainbirds", "Clarissa Goenawan","2018"),
+                new BibliotecaBook("The Descent of Monsters (The Tensorate Series)", "JY Yang", "2018")
+        ));
         movieShelf = new BibliotecaShelf(Arrays.asList(
                 new BibliotecaMovie("Ilo Ilo", "2013", "Anthony Chen", "7.3"),
                 new BibliotecaMovie("12 Storeys", "1997", "Eric Khoo", "6.8"),

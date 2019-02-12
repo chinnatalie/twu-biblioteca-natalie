@@ -10,15 +10,6 @@ public class BibliotecaShelf {
 
     private ArrayList<BibliotecaResource> resources;
 
-    BibliotecaShelf() {
-        resources = new ArrayList<>();
-        resources.add(new BibliotecaBook("An Ocean of Minutes", "Thea Lim", "2018"));
-        resources.add(new BibliotecaBook("Bury What We Cannot Take", "Kirsten Chen", "2018"));
-        resources.add(new BibliotecaBook( "Ponti", "Sharlene Teo", "2018"));
-        resources.add(new BibliotecaBook("Rainbirds", "Clarissa Goenawan","2018"));
-        resources.add(new BibliotecaBook("The Descent of Monsters (The Tensorate Series)", "JY Yang", "2018"));
-    }
-
     BibliotecaShelf(List<BibliotecaResource> resources) {
         this.resources = new ArrayList<>(resources);
     }

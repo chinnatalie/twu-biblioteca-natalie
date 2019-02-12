@@ -26,6 +26,11 @@ public class BibliotecaShelfTest {
     private final String borrower = "123-4567";
     private final String listOfAllCheckedOutBooks = "Ponti | 123-4567\n" +
             "Rainbirds | 123-4567\n";
+    private final String book = "Ponti";
+    private final String updatedList = "An Ocean of Minutes | Thea Lim | 2018\n" +
+            "Bury What We Cannot Take | Kirsten Chen | 2018\n" +
+            "Rainbirds | Clarissa Goenawan | 2018\n" +
+            "The Descent of Monsters (The Tensorate Series) | JY Yang | 2018\n";
 
     @Before
     public void initializeBibliotecaShelf() {
@@ -45,31 +50,24 @@ public class BibliotecaShelfTest {
 
     @Test
     public void shouldCheckoutBook() {
-        bibliotecaBookShelf.checkoutResource(borrower, "Rainbirds");
-        assertThat(bibliotecaBookShelf.getAllAvailableResources(), is("An Ocean of Minutes | Thea Lim | 2018\n" +
-                "Bury What We Cannot Take | Kirsten Chen | 2018\n" +
-                "Ponti | Sharlene Teo | 2018\n" +
-                "The Descent of Monsters (The Tensorate Series) | JY Yang | 2018\n"));
+        bibliotecaBookShelf.checkoutResource(borrower, book);
+        assertThat(bibliotecaBookShelf.getAllAvailableResources(), is(updatedList));
     }
 
     @Test
     public void shouldReturnSuccessStatusOnCheckout() {
-        assertThat(bibliotecaBookShelf.checkoutResource(borrower, "Rainbirds"), is(CheckoutStatus.SUCCESS));
+        assertThat(bibliotecaBookShelf.checkoutResource(borrower, book), is(CheckoutStatus.SUCCESS));
     }
 
     @Test
     public void shouldNotSeeBookAfterCheckout() {
-        bibliotecaBookShelf.checkoutResource(borrower, "Ponti");
-        String updatedList = "An Ocean of Minutes | Thea Lim | 2018\n" +
-                "Bury What We Cannot Take | Kirsten Chen | 2018\n" +
-                "Rainbirds | Clarissa Goenawan | 2018\n" +
-                "The Descent of Monsters (The Tensorate Series) | JY Yang | 2018\n";
+        bibliotecaBookShelf.checkoutResource(borrower, book);
         assertThat(bibliotecaBookShelf.getAllAvailableResources(), is(updatedList));
     }
 
     @Test
     public void shouldReturnFailureStatusOnCheckoutIfUnavailable() {
-        bibliotecaBookShelf.checkoutResource(borrower, "Ponti");
+        bibliotecaBookShelf.checkoutResource(borrower, book);
         assertThat(bibliotecaBookShelf.checkoutResource(borrower, "Ponti | Sharlene Teo | 2018"), is(CheckoutStatus.FAILURE));
     }
 
@@ -80,20 +78,20 @@ public class BibliotecaShelfTest {
 
     @Test
     public void shouldReturnSuccessStatusOnReturn() {
-        bibliotecaBookShelf.checkoutResource(borrower,"Ponti");
-        assertThat(bibliotecaBookShelf.returnResource("Ponti"), is(ReturnStatus.SUCCESS));
+        bibliotecaBookShelf.checkoutResource(borrower, book);
+        assertThat(bibliotecaBookShelf.returnResource(book), is(ReturnStatus.SUCCESS));
     }
 
     @Test
     public void shouldSeeBookAfterReturn() {
-        bibliotecaBookShelf.checkoutResource(borrower,"Ponti");
-        bibliotecaBookShelf.returnResource("Ponti");
+        bibliotecaBookShelf.checkoutResource(borrower, book);
+        bibliotecaBookShelf.returnResource(book);
         assertThat(bibliotecaBookShelf.getAllAvailableResources(), is(listOfAllBooks));
     }
 
     @Test
     public void shouldReturnFailureStatusOnReturnIfNotCheckedOut() {
-        assertThat(bibliotecaBookShelf.returnResource("Ponti"), is(ReturnStatus.FAILURE));
+        assertThat(bibliotecaBookShelf.returnResource(book), is(ReturnStatus.FAILURE));
     }
 
     @Test
@@ -118,7 +116,7 @@ public class BibliotecaShelfTest {
 
     @Test
     public void shouldSeeAllCheckedOutBooks() {
-        bibliotecaBookShelf.checkoutResource(borrower, "Ponti");
+        bibliotecaBookShelf.checkoutResource(borrower, book);
         bibliotecaBookShelf.checkoutResource(borrower, "Rainbirds");
         assertThat(bibliotecaBookShelf.getAllCheckedOutResources(), is(listOfAllCheckedOutBooks));
     }

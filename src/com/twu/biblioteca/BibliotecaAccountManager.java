@@ -18,8 +18,8 @@ public class BibliotecaAccountManager {
     }
 
     public boolean loginUser(String libraryNumber, String password) {
-        for (BibliotecaAccount account: accounts) {
-            if (account.hasNumber(libraryNumber) && account.authenticate(password)) {
+        for (BibliotecaAccount account : accounts) {
+            if (account.hasCorrectCredentials(libraryNumber, password)) {
                 loggedInUser = Optional.of(libraryNumber);
                 return true;
             }

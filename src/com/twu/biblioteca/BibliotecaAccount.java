@@ -16,8 +16,8 @@ public class BibliotecaAccount {
             return false;
     }
 
-    public boolean hasNumber(String libraryNumber) {
-        if (libraryNumber.equals(this.libraryNumber))
+    public boolean hasCorrectCredentials(String libraryNumber, String password) {
+        if (this.libraryNumber.equals(libraryNumber) && this.password.equals(password))
             return true;
         else
             return false;

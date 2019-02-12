@@ -58,6 +58,21 @@ class BibliotecaUI {
         selectMenuOption();
     }
 
+    void login() {
+        while (true) {
+            print(loginMessage);
+            print(loginNumberQuestion);
+            String libraryNumber = scanner.nextLine();
+            print(loginPasswordQuestion);
+            String password = scanner.nextLine();
+            if (accountManager.loginUser(libraryNumber, password)) {
+                print(successLoginMessage);
+                break;
+            } else
+                print(failureLoginMessage);
+        }
+    }
+
     void selectMenuOption() {
         while(true) {
             Integer selection = getOptionSelected(scanner.next());
@@ -89,6 +104,16 @@ class BibliotecaUI {
         }
     }
 
+    private int getOptionSelected(String userInput) {
+        Integer selection;
+        try {
+            selection = Integer.parseInt(userInput);
+        } catch (Exception e) {
+            selection = -1;
+        }
+        return selection;
+    }
+
     void returnBook(String bookName) {
         ReturnStatus returnStatus = bookShelf.returnResource(bookName);
         switch (returnStatus) {
@@ -114,14 +139,17 @@ class BibliotecaUI {
         }
     }
 
-    private int getOptionSelected(String userInput) {
-        Integer selection;
-        try {
-            selection = Integer.parseInt(userInput);
-        } catch (Exception e) {
-            selection = -1;
+    void checkOutMovie(String movieName) {
+        String borrower = accountManager.getLoggedInUser();
+        CheckoutStatus checkOutStatus = movieShelf.checkoutResource(borrower, movieName);
+        switch (checkOutStatus) {
+            case SUCCESS:
+                print(successMovieCheckOutMessage);
+                break;
+            case FAILURE:
+                print(failureMovieCheckOutMessage);
+                break;
         }
-        return selection;
     }
 
     void printWelcomeMessage() {
@@ -144,35 +172,7 @@ class BibliotecaUI {
 
     private void print(String message) { System.out.println(message); }
 
-    void checkOutMovie(String movieName) {
-        String borrower = accountManager.getLoggedInUser();
-        CheckoutStatus checkOutStatus = movieShelf.checkoutResource(borrower, movieName);
-        switch (checkOutStatus) {
-            case SUCCESS:
-                print(successMovieCheckOutMessage);
-                break;
-            case FAILURE:
-                print(failureMovieCheckOutMessage);
-                break;
-        }
-    }
-
     void openScanner() {
         scanner = new Scanner(System.in);
-    }
-
-    void login() {
-        while (true) {
-            print(loginMessage);
-            print(loginNumberQuestion);
-            String libraryNumber = scanner.nextLine();
-            print(loginPasswordQuestion);
-            String password = scanner.nextLine();
-            if (accountManager.loginUser(libraryNumber, password)) {
-                print(successLoginMessage);
-                break;
-            } else
-                print(failureLoginMessage);
-        }
     }
 }

@@ -71,7 +71,6 @@ class BibliotecaUI {
     }
 
     void selectMenuOption() {
-//        openScanner();
         while(true) {
             Integer selection = getOptionSelected(scanner.next());
             if (selection == 1)
@@ -100,7 +99,6 @@ class BibliotecaUI {
             else
                 print(invalidOptionMessage);
         }
-//        closeScanner();
     }
 
     void returnBook(String bookName) {
@@ -156,12 +154,8 @@ class BibliotecaUI {
     void openScanner() {
         scanner = new Scanner(System.in);
     }
-    private void closeScanner() {
-        scanner.close();
-    }
 
     public void login() {
-//        openScanner();
         while (true) {
             print(loginMessage);
             print(loginNumberQuestion);
@@ -174,6 +168,5 @@ class BibliotecaUI {
             } else
                 print(failureLoginMessage);
         }
-//        closeScanner();
     }
 }

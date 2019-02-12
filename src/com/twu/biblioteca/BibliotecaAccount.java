@@ -9,8 +9,8 @@ public class BibliotecaAccount {
         this.password = password;
     }
 
-    public boolean authenticate(String password123) {
-        if (password123.equals(this.password))
+    public boolean authenticate(String password) {
+        if (password.equals(this.password))
             return true;
         else
             return false;

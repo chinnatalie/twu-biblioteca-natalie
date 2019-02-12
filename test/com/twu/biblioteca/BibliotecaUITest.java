@@ -31,6 +31,7 @@ public class BibliotecaUITest {
             "5) Check out movie\n" +
             "6) Books on loan\n" +
             "7) Account details\n" +
+            "9) All book loans (librarians only)\n" +
             "0) Exit\n";
 
     private final String listOfAllBooksWithAuthorAndPublishedYear = "An Ocean of Minutes | Thea Lim | 2018\n" +
@@ -289,5 +290,12 @@ public class BibliotecaUITest {
                 "Email: tinggi.tan@thoughtworks.com\n" +
                 "Phone number: +65 9876 5432\n";
         assertThat(outContent.toString(), containsString(accountDetails));
+    }
+
+    @Test
+    public void shouldSeeAllCheckedOutBooks() {
+        givenUserInputs(Arrays.asList("987-6543", "1234", "2", bookName, "9", "0"));
+        bibliotecaUI.start();
+        assertThat(outContent.toString(), containsString("The Descent of Monsters (The Tensorate Series) | 987-6543"));
     }
 }

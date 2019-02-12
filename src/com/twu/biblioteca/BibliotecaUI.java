@@ -19,6 +19,7 @@ class BibliotecaUI {
             "5) Check out movie\n" +
             "6) Books on loan\n" +
             "7) Account details\n" +
+            "9) All book loans (librarians only)\n" +
             "0) Exit";
     private final String invalidOptionMessage = "Please select a valid option!";
     private final String exitMessage = "Exiting application";
@@ -94,12 +95,15 @@ class BibliotecaUI {
             else if (selection == 6) {
                 printCheckedOutBooks();
             }
+            else if (selection == 7)
+                print(accountManager.getLoggedInUserDetails());
+            else if (selection == 9) {
+                print(bookShelf.getAllCheckedOutResources());
+            }
             else if (selection == 0) {
                 print(exitMessage);
                 break;
             }
-            else if (selection == 7)
-                print(accountManager.getLoggedInUserDetails());
             else
                 print(invalidOptionMessage);
         }

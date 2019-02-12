@@ -42,4 +42,11 @@ public class BibliotecaAccount {
         details += "Phone number: " + phoneNumber + "\n";
         return details;
     }
+
+    public boolean hasLibraryNumber(String libraryNumber) {
+        if (this.libraryNumber.equals(libraryNumber))
+            return true;
+        else
+            return false;
+    }
 }

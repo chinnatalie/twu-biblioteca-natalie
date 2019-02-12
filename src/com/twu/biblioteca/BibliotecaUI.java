@@ -29,6 +29,8 @@ class BibliotecaUI {
     private final String successMovieCheckOutMessage = "Thank you! Enjoy the movie";
     private final String failureMovieCheckOutMessage = "Sorry, that movie is not available";
 
+    private final String loginMessage = "You need to login to use Biblioteca.";
+
     BibliotecaUI() {
         bookShelf = new BibliotecaShelf();
         movieShelf = new BibliotecaShelf(Arrays.asList(
@@ -134,5 +136,9 @@ class BibliotecaUI {
                 print(failureMovieCheckOutMessage);
                 break;
         }
+    }
+
+    public void login() {
+        print(loginMessage);
     }
 }

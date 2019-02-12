@@ -54,6 +54,8 @@ public class BibliotecaUITest {
     private final String successMovieCheckOutMessage = "Thank you! Enjoy the movie";
     private final String failureMovieCheckOutMessage = "Sorry, that movie is not available";
 
+    private final String loginMessage = "You need to login to use Biblioteca.";
+
     @Before
     public void setUpStreams() {
         System.setOut(new PrintStream(outContent));
@@ -198,5 +200,11 @@ public class BibliotecaUITest {
     public void shouldSeeFailureMessageOnMovieCheckOut() {
         bibliotecaUI.checkOutMovie("Spirited Away");
         assertThat(outContent.toString(), containsString(failureMovieCheckOutMessage));
+    }
+
+    @Test
+    public void shouldShowLoginMessage() {
+        bibliotecaUI.login();
+        assertThat(outContent.toString(), containsString(loginMessage));
     }
 }

@@ -39,6 +39,7 @@ class BibliotecaUI {
     private final String loginPasswordQuestion = "Your password: ";
     private final String successLoginMessage = "You have logged in successfully!";
     private final String failureLoginMessage = "You have entered the wrong details!";
+    private final String unauthorizedMessage = "You are not authorized to view this!";
 
     private static Scanner scanner;
 
@@ -123,7 +124,7 @@ class BibliotecaUI {
         if (accountManager.isLoggedInByLibrarian())
             print(bookShelf.getAllCheckedOutResources());
         else
-            print("You are not authorized to view this!");
+            print(unauthorizedMessage);
     }
 
     void checkoutBook() {

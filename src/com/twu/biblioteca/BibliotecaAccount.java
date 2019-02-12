@@ -24,7 +24,8 @@ public class BibliotecaAccount {
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.membership = Membership.LIBRARIAN;
+        if (isLibrarian)
+            this.membership = Membership.LIBRARIAN;
     }
 
     public boolean authenticate(String password) {

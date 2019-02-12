@@ -15,4 +15,11 @@ public class BibliotecaAccount {
         else
             return false;
     }
+
+    public boolean hasNumber(String libraryNumber) {
+        if (libraryNumber == this.libraryNumber)
+            return true;
+        else
+            return false;
+    }
 }

@@ -16,7 +16,7 @@ public class BibliotecaAccountManager {
 
     public boolean loginUser(String libraryNumber, String password) {
         for (BibliotecaAccount account: accounts) {
-            if (account.authenticate(password))
+            if (account.hasNumber(libraryNumber) && account.authenticate(password))
                 return true;
         }
         return false;

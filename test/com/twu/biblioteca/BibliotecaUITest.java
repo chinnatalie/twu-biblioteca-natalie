@@ -58,6 +58,7 @@ public class BibliotecaUITest {
     private final String loginNumberQuestion = "Your library number: ";
     private final String loginPasswordQuestion = "Your password: ";
     private final String successLoginMessage = "You have logged in successfully!";
+    private final String failureLoginMessage = "You have entered the wrong details!";
     private final String libraryNumber = "123-4567";
     private final String password = "password123";
 
@@ -234,5 +235,12 @@ public class BibliotecaUITest {
         givenUserInputs(Arrays.asList(libraryNumber, password));
         bibliotecaUI.login();
         assertThat(outContent.toString(), containsString(successLoginMessage));
+    }
+
+    @Test
+    public void shouldSeeFailureLogin() {
+        givenUserInputs(Arrays.asList(libraryNumber, "notthepassword"));
+        bibliotecaUI.login();
+        assertThat(outContent.toString(), containsString(failureLoginMessage));
     }
 }

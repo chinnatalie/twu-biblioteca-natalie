@@ -35,6 +35,7 @@ class BibliotecaUI {
     private final String loginNumberQuestion = "Your library number: ";
     private final String loginPasswordQuestion = "Your password: ";
     private final String successLoginMessage = "You have logged in successfully!";
+    private final String failureLoginMessage = "You have entered the wrong details!";
 
     private static Scanner scanner;
 
@@ -162,6 +163,8 @@ class BibliotecaUI {
         String password = scanner.nextLine();
         if (accountManager.loginUser(libraryNumber, password))
             print(successLoginMessage);
+        else
+            print(failureLoginMessage);
         closeScanner();
     }
 }

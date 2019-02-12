@@ -207,19 +207,29 @@ public class BibliotecaUITest {
 
     @Test
     public void shouldShowLoginMessage() {
+        givenUserInputs(Arrays.asList("123-4567", "password123"));
         bibliotecaUI.login();
         assertThat(outContent.toString(), containsString(loginMessage));
     }
 
     @Test
     public void shouldAskForLibraryNumber() {
+        givenUserInputs(Arrays.asList("123-4567", "password123"));
         bibliotecaUI.login();
         assertThat(outContent.toString(), containsString(loginNumberQuestion));
     }
 
     @Test
     public void shouldAskForPassword() {
+        givenUserInputs(Arrays.asList("123-4567", "password123"));
         bibliotecaUI.login();
         assertThat(outContent.toString(), containsString(loginPasswordQuestion));
+    }
+
+    @Test
+    public void shouldSeeSuccessLogin() {
+        givenUserInputs(Arrays.asList("876-5432", "helloworld"));
+        bibliotecaUI.login();
+        assertThat(outContent.toString(), containsString("logged in"));
     }
 }

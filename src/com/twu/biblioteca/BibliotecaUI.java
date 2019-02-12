@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 class BibliotecaUI {
 
+    private static BibliotecaAccountManager accountManager = new BibliotecaAccountManager();
+
     private BibliotecaShelf bookShelf;
     private BibliotecaShelf movieShelf;
 
@@ -32,8 +34,9 @@ class BibliotecaUI {
     private final String loginMessage = "You need to login to use Biblioteca.";
     private final String loginNumberQuestion = "Your library number: ";
     private final String loginPasswordQuestion = "Your password: ";
+    private final String successLoginMessage = "You have logged in successfully!";
 
-    private Scanner scanner;
+    private static Scanner scanner;
 
     BibliotecaUI() {
         bookShelf = new BibliotecaShelf();
@@ -47,7 +50,6 @@ class BibliotecaUI {
 
     void start() {
         print(welcomeMessage);
-        login();
         printMainMenu();
         selectMenuOption();
     }
@@ -155,7 +157,11 @@ class BibliotecaUI {
         openScanner();
         print(loginMessage);
         print(loginNumberQuestion);
+        String libraryNumber = scanner.nextLine();
         print(loginPasswordQuestion);
+        String password = scanner.nextLine();
+        if (accountManager.loginUser(libraryNumber, password))
+            print(successLoginMessage);
         closeScanner();
     }
 }

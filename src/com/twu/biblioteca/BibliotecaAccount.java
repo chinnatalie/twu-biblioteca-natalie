@@ -10,14 +10,14 @@ public class BibliotecaAccount {
     }
 
     public boolean authenticate(String password123) {
-        if (password123 == this.password)
+        if (password123.equals(this.password))
             return true;
         else
             return false;
     }
 
     public boolean hasNumber(String libraryNumber) {
-        if (libraryNumber == this.libraryNumber)
+        if (libraryNumber.equals(this.libraryNumber))
             return true;
         else
             return false;

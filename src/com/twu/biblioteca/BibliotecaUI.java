@@ -114,7 +114,8 @@ class BibliotecaUI {
     }
 
     void checkoutBook(String bookName) {
-        CheckoutStatus checkoutStatus = bookShelf.checkoutResource("123-4567", bookName);
+        String borrower = accountManager.getLoggedInUser();
+        CheckoutStatus checkoutStatus = bookShelf.checkoutResource(borrower, bookName);
         switch (checkoutStatus) {
             case SUCCESS:
                 print(successCheckoutMessage);
@@ -140,7 +141,8 @@ class BibliotecaUI {
     }
 
     void checkOutMovie(String movieName) {
-        CheckoutStatus checkOutStatus = movieShelf.checkoutResource("123-4567", movieName);
+        String borrower = accountManager.getLoggedInUser();
+        CheckoutStatus checkOutStatus = movieShelf.checkoutResource(borrower, movieName);
         switch (checkOutStatus) {
             case SUCCESS:
                 print(successMovieCheckOutMessage);

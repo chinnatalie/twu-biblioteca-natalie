@@ -75,12 +75,11 @@ class BibliotecaUI {
 
     void selectMenuOption() {
         while(true) {
-            Integer selection = getOptionSelected(scanner.next());
+            Integer selection = getOptionSelected(scanner.nextLine());
             if (selection == 1)
                 printAllBooksWithAuthorAndPublishedYear();
             else if (selection == 2) {
-                print(checkoutBookQuestion);
-                checkoutBook(scanner.next());
+                checkoutBook();
             }
             else if (selection == 3) {
                 print(returnBookQuestion);
@@ -114,6 +113,23 @@ class BibliotecaUI {
         return selection;
     }
 
+    void checkoutBook() {
+        print(checkoutBookQuestion);
+        String bookToCheckOut = scanner.nextLine();
+        print(bookToCheckOut);
+        String borrower = accountManager.getLoggedInUser();
+        CheckoutStatus checkoutStatus = bookShelf.checkoutResource(borrower, bookToCheckOut);
+        switch (checkoutStatus) {
+            case SUCCESS:
+                print(successCheckoutMessage);
+                break;
+            case FAILURE:
+                print(failureCheckoutMessage);
+                break;
+        }
+    }
+
+
     void returnBook(String bookName) {
         ReturnStatus returnStatus = bookShelf.returnResource(bookName);
         switch (returnStatus) {
@@ -122,19 +138,6 @@ class BibliotecaUI {
                 break;
             case FAILURE:
                 print(failureReturnMessage);
-                break;
-        }
-    }
-
-    void checkoutBook(String bookName) {
-        String borrower = accountManager.getLoggedInUser();
-        CheckoutStatus checkoutStatus = bookShelf.checkoutResource(borrower, bookName);
-        switch (checkoutStatus) {
-            case SUCCESS:
-                print(successCheckoutMessage);
-                break;
-            case FAILURE:
-                print(failureCheckoutMessage);
                 break;
         }
     }

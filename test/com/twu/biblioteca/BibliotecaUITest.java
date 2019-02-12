@@ -141,14 +141,18 @@ public class BibliotecaUITest {
 
     @Test
     public void shouldSeeSuccessMessageOnCheckout() {
-        bibliotecaUI.checkoutBook(bookName);
+        givenUserInputs(Arrays.asList(bookName));
+        bibliotecaUI.openScanner();
+        bibliotecaUI.checkoutBook();
         assertThat(outContent.toString(), containsString(successCheckoutMessage));
     }
 
     @Test
     public void shouldSeeFailureMessageOnCheckout() {
-        bibliotecaUI.checkoutBook(bookName);
-        bibliotecaUI.checkoutBook(bookName);
+        givenUserInputs(Arrays.asList(bookName, bookName));
+        bibliotecaUI.openScanner();
+        bibliotecaUI.checkoutBook();
+        bibliotecaUI.checkoutBook();
         assertThat(outContent.toString(), containsString(failureCheckoutMessage));
     }
 
@@ -168,7 +172,9 @@ public class BibliotecaUITest {
 
     @Test
     public void shouldSeeSuccessMessageOnReturn() {
-        bibliotecaUI.checkoutBook(bookName);
+        givenUserInputs(Arrays.asList(bookName));
+        bibliotecaUI.openScanner();
+        bibliotecaUI.checkoutBook();
         bibliotecaUI.returnBook(bookName);
         assertThat(outContent.toString(), containsString(successReturnMessage));
     }
@@ -262,8 +268,8 @@ public class BibliotecaUITest {
 
     @Test
     public void shouldSeeCheckedOutBooks() {
-        givenUserInputs(Arrays.asList(libraryNumber, password, "2", "Ponti", "6", "0"));
+        givenUserInputs(Arrays.asList(libraryNumber, password, "2", bookName, "6", "0"));
         bibliotecaUI.start();
-        assertThat(outContent.toString(), containsString("Ponti | 123-4567"));
+        assertThat(outContent.toString(), containsString("The Descent of Monsters (The Tensorate Series) | 123-4567"));
     }
 }

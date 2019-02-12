@@ -156,15 +156,18 @@ class BibliotecaUI {
 
     public void login() {
         openScanner();
-        print(loginMessage);
-        print(loginNumberQuestion);
-        String libraryNumber = scanner.nextLine();
-        print(loginPasswordQuestion);
-        String password = scanner.nextLine();
-        if (accountManager.loginUser(libraryNumber, password))
-            print(successLoginMessage);
-        else
-            print(failureLoginMessage);
+        while (true) {
+            print(loginMessage);
+            print(loginNumberQuestion);
+            String libraryNumber = scanner.nextLine();
+            print(loginPasswordQuestion);
+            String password = scanner.nextLine();
+            if (accountManager.loginUser(libraryNumber, password)) {
+                print(successLoginMessage);
+                break;
+            } else
+                print(failureLoginMessage);
+        }
         closeScanner();
     }
 }

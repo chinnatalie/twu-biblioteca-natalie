@@ -239,8 +239,15 @@ public class BibliotecaUITest {
 
     @Test
     public void shouldSeeFailureLogin() {
-        givenUserInputs(Arrays.asList(libraryNumber, "notthepassword"));
+        givenUserInputs(Arrays.asList(libraryNumber, "notthepassword", libraryNumber, password));
         bibliotecaUI.login();
         assertThat(outContent.toString(), containsString(failureLoginMessage));
+    }
+
+    @Test
+    public void shouldAskForLoginUntilSuccessful() {
+        givenUserInputs(Arrays.asList(libraryNumber, "wrongTry1", libraryNumber, "wrongTry2", libraryNumber, password));
+        bibliotecaUI.login();
+        assertThat(outContent.toString(), containsString(successLoginMessage));
     }
 }

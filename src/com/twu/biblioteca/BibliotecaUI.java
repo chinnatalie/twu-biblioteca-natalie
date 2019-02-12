@@ -109,7 +109,7 @@ class BibliotecaUI {
     }
 
     void checkoutBook(String bookName) {
-        CheckoutStatus checkoutStatus = bookShelf.checkoutResource(bookName);
+        CheckoutStatus checkoutStatus = bookShelf.checkoutResource("123-4567", bookName);
         switch (checkoutStatus) {
             case SUCCESS:
                 print(successCheckoutMessage);
@@ -135,7 +135,7 @@ class BibliotecaUI {
     }
 
     public void checkOutMovie(String movieName) {
-        CheckoutStatus checkOutStatus = movieShelf.checkoutResource(movieName);
+        CheckoutStatus checkOutStatus = movieShelf.checkoutResource("123-4567", movieName);
         switch (checkOutStatus) {
             case SUCCESS:
                 print(successMovieCheckOutMessage);

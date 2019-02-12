@@ -43,11 +43,22 @@ public class BibliotecaShelf {
         return result;
     }
 
-    CheckoutStatus checkoutResource(String resourceName) {
+    public String getAllCheckedOutResources() {
+        String result = "";
+        for (BibliotecaResource resource: resources) {
+            if (resource.isCheckedOut()) {
+                result += resource.getName() + " | " + resource.getBorrower().get();
+                result += "\n";
+            }
+        }
+        return result;
+    }
+
+    CheckoutStatus checkoutResource(String borrower, String resourceName) {
         try {
             for (BibliotecaResource resource: resources) {
                 if (resource.getName() == resourceName && resource.isAvailable()) {
-                    resource.checkOut("123-4567");
+                    resource.checkOut(borrower);
                     return CheckoutStatus.SUCCESS;
                 }
             }

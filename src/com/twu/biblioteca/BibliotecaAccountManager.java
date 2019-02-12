@@ -1,9 +1,12 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class BibliotecaAccountManager {
-    ArrayList<BibliotecaAccount> accounts;
+
+    private ArrayList<BibliotecaAccount> accounts;
+    private Optional<String> loggedInUser;
 
     BibliotecaAccountManager() {
         accounts = new ArrayList<>();
@@ -16,9 +19,15 @@ public class BibliotecaAccountManager {
 
     public boolean loginUser(String libraryNumber, String password) {
         for (BibliotecaAccount account: accounts) {
-            if (account.hasNumber(libraryNumber) && account.authenticate(password))
+            if (account.hasNumber(libraryNumber) && account.authenticate(password)) {
+                loggedInUser = Optional.of(libraryNumber);
                 return true;
+            }
         }
         return false;
+    }
+
+    public String getLoggedInUser() {
+        return loggedInUser.get();
     }
 }

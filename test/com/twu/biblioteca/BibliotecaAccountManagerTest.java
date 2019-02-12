@@ -23,4 +23,10 @@ public class BibliotecaAccountManagerTest {
     public void shouldReturnFalseIfWrongPassword() {
         assertThat(accountManager.loginUser("123-4567", "1234"), is(false));
     }
+
+    @Test
+    public void shouldReturnLoggedInUser() {
+        accountManager.loginUser("123-4567", "password123");
+        assertThat(accountManager.getLoggedInUser(), is("123-4567"));
+    }
 }
